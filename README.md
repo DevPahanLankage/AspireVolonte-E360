@@ -1,188 +1,193 @@
-# Vital Care - Insurance Website
+# Aspire Volonte - Financial Advisory Website
 
-A modern, responsive insurance website showcasing various insurance policies, featuring an interactive premium calculator, tree planting initiative, and lead generation capabilities.
+A modern, responsive financial advisory website showcasing various insurance policies, featuring elegant modal interactions, tree planting initiative, and comprehensive insurance solutions.
 
-![Vital Care](https://img.shields.io/badge/Vital%20Care-Insurance-blue)
+![Aspire Volonte](https://img.shields.io/badge/Aspire%20Volonte-Insurance-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
-
-## 🌟 Live Demo
-
-Visit the live website: [Vital Care Insurance](https://devpahanlankage.github.io/VitalCare/)
-
-[![Website Preview](https://img.shields.io/badge/Preview-Live%20Demo-brightgreen)](https://devpahanlankage.github.io/VitalCare/)
 
 ## 🌟 Features
 
 ### Core Features
 
-- 📱 Responsive design that works on all devices
-- 🧮 Interactive insurance premium calculator
-- 🌳 Tree planting donation initiative
-- 💬 Live chat widget
-- 📊 Insurance plan comparison tool
-- 📝 Contact forms with validation
+- 📱 Fully responsive design optimized for all devices
+- 🎯 Interactive policy cards with themed modals
+- 🌳 Environmental initiative with tree planting program
+- 💬 Real-time chat support
+- 📊 Quick quote calculator
+- 📝 Smart contact forms with validation
 - 📨 Newsletter subscription system
+- 🎨 Modern UI with smooth animations
 
 ### Technical Features
 
-- ⚡ Modern animations and transitions
-- 🎨 Glassmorphism design elements
+- ⚡ Elegant animations and transitions
+- 🎨 Themed components and modals
 - 🔄 Dynamic content loading
 - 📊 Real-time premium calculations
 - 📱 Mobile-first approach
-- 🔒 Form validation and security measures
+- 🔒 Secure form handling with Firebase
+- 🌐 Integrated backend with Firebase
 
 ## 🛠️ Tech Stack
 
 - **Frontend**:
-
   - HTML5
-  - CSS3 (with Flexbox/Grid)
+  - CSS3 (with modern Flexbox/Grid)
   - JavaScript (ES6+)
   - Google Fonts
   - Font Awesome Icons
+  - AOS (Animate On Scroll)
+  - Swiper.js
+  - Vanilla-tilt.js
+  - CountUp.js
+
+- **Backend**:
+  - Firebase (Firestore)
+  - Node.js
+  - Express.js
 
 - **Dependencies**:
+  - Firebase Admin SDK
   - Stripe.js (for payments)
-  - Live Server (development)
+  - Nodemailer (for emails)
+  - Cors
+  - Helmet (for security)
 
 ## 🚀 Getting Started
 
-### Live Demo
-You can access the live version of the website at [https://devpahanlankage.github.io/VitalCare/](https://devpahanlankage.github.io/VitalCare/)
+### Prerequisites
 
-### Local Development
-
-#### Prerequisites
-
-- Node.js (v14 or higher)
-- npm (v6 or higher)
+- Node.js (v18 or higher)
+- npm (latest version)
+- Firebase account
 
 ### Installation
 
 1. Clone the repository:
-
    ```bash
-   git clone https://github.com/DevPahanLankage/VitalCare.git
+   git clone https://github.com/DevPahanLankage/AspireVolonte-E360.git
    ```
 
-2. Navigate to the project directory:
-
+2. Navigate to project directory:
    ```bash
-   cd VitalCare
+   cd AspireVolonte-E360
    ```
 
 3. Install dependencies:
-
    ```bash
    npm install
    ```
 
-4. Start the development server:
-   ```bash
-   npm start
+4. Set up environment variables:
+   Create a `.env` file with:
+   ```env
+   FIREBASE_API_KEY=your_api_key
+   FIREBASE_AUTH_DOMAIN=your_auth_domain
+   FIREBASE_PROJECT_ID=your_project_id
+   FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   FIREBASE_APP_ID=your_app_id
+   STRIPE_SECRET_KEY=your_stripe_secret_key
    ```
 
-The website will be available at `http://localhost:8080`
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
 ## 🎨 Design System
 
-### Colors
+### Color Themes
 
-- Light Gray: `#E0E0E0`
-- Light Blue: `#B3D4FC`
-- Bright Blue: `#00A1E4`
-- Navy Blue: `#00509E`
-- Dark Navy: `#003366`
+- Accident Insurance: `#FF8C00` (Orange)
+- Critical Illness: `#E91E63` (Pink)
+- Cancer Insurance: `#E91E63` (Pink)
+- Disability Insurance: `#009688` (Teal)
+- Life Insurance: `#673AB7` (Purple)
+- Hospital Insurance: `#1976D2` (Blue)
 
 ### Typography
 
-- Header Font: Grown
-- Body Font: Montserrat Classic
+- Primary Font: Montserrat
+- Secondary Font: Playfair Display
 
 ### Components
 
-- Buttons
-- Forms
-- Cards
-- Modals
-- Widgets
-- Navigation
+- Themed Policy Cards
+- Interactive Modals
+- Animated Buttons
+- Smart Forms
+- Responsive Navigation
+- Environmental Impact Counter
 
-## 📱 Responsive Breakpoints
+## 📱 Responsive Design
 
 - Mobile: < 768px
 - Tablet: 768px - 1024px
 - Desktop: > 1024px
 
-## 🌳 Tree Planting Initiative
+## 🌳 Environmental Initiative
 
-The website includes a tree planting donation feature that:
-
-- Accepts donations through Stripe
-- Updates tree counter in real-time
-- Provides donation certificates
-- Shows environmental impact
-
-## 🧮 Insurance Calculator
-
-The calculator widget allows users to:
-
-- Select insurance type
-- Input age and coverage amount
-- Get instant premium estimates
-- Compare different plans
+Our tree planting program features:
+- Real-time tree counter
+- CO₂ absorption tracking
+- Community impact metrics
+- Digital certificates
 
 ## 💻 Development
 
 ### File Structure
 
 ```
-VitalCare/
-├── assets/
-│   └── pattern.svg
+AspireVolonte-E360/
+├── api/
+│   └── forms.js
+├── config/
+│   └── firebase.js
+├── functions/
+│   └── index.js
+├── public/
+│   └── styles/
+├── scripts/
+│   ├── main.js
+│   └── policy-data.js
 ├── styles/
-│   └── main.css
-├── js/
-│   └── main.js
+│   ├── main.css
+│   └── components.css
+├── templates/
 ├── index.html
-├── package.json
+├── server.js
 └── README.md
 ```
 
-### Code Style
+### Code Standards
 
 - BEM methodology for CSS
-- ES6+ JavaScript features
-- Semantic HTML5 elements
+- Modern JavaScript (ES6+)
+- Semantic HTML5
+- Responsive design principles
+- Accessibility best practices
 
-## 🔧 Configuration
+## 🔐 Security
 
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-STRIPE_PUBLIC_KEY=your_stripe_public_key
-```
+- Firebase Authentication
+- Secure form handling
+- CORS protection
+- Helmet security headers
+- Environment variable protection
 
 ## 🚀 Deployment
 
-The website is currently deployed using GitHub Pages and can be accessed at [https://devpahanlankage.github.io/VitalCare/](https://devpahanlankage.github.io/VitalCare/)
+1. Build the project:
+   ```bash
+   npm run build
+   ```
 
-You can also deploy it to other static hosting services:
-- Netlify
-- Vercel
-- AWS S3
-
-### GitHub Pages Deployment
-The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. To deploy your own version:
-
-1. Fork this repository
-2. Go to repository Settings > Pages
-3. Set source branch to `main`
-4. Your site will be available at `https://[your-username].github.io/VitalCare/`
+2. Deploy to Firebase:
+   ```bash
+   firebase deploy
+   ```
 
 ## 📝 Contributing
 
@@ -194,15 +199,11 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Authors
-
-- **Pahan Lankage** - _Initial work_ - [DevPahanLankage](https://github.com/DevPahanLankage)
+This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
 - Font Awesome for icons
 - Google Fonts for typography
+- Firebase for backend services
 - Stripe for payment processing
-- Contributors and testers
