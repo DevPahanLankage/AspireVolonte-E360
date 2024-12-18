@@ -1,228 +1,282 @@
-// Mobile Navigation
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navWrapper = document.querySelector('.nav-wrapper');
-const navLinks = document.querySelectorAll('.nav-link');
-
-function initializeMobileMenu() {
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        navWrapper.classList.toggle('active');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navWrapper.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-            mobileMenuBtn.classList.remove('active');
-            navWrapper.classList.remove('active');
-        }
-    });
-
-    // Close menu when clicking nav links
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('active');
-            navWrapper.classList.remove('active');
-        });
-    });
-}
-
-// Form Handling
-function initializeForms() {
-    const contactForm = document.getElementById('contactForm');
-    const newsletterForm = document.getElementById('newsletterForm');
-    const quickQuoteForm = document.getElementById('quickQuoteForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmit);
-    }
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', handleFormSubmit);
-    }
-    if (quickQuoteForm) {
-        quickQuoteForm.addEventListener('submit', handleFormSubmit);
-    }
-}
-
-async function handleFormSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
+// Wait for DOM and Firebase to be ready
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded');
     
-    if (!validateForm(form)) {
-        showNotification('Please fill in all required fields', 'error');
+    // Check if Firebase is initialized
+    if (typeof firebase === 'undefined') {
+        console.error('Firebase is not loaded!');
         return;
     }
 
+    // Initialize Firebase components
     try {
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        showNotification('Form submitted successfully!', 'success');
-        form.reset();
+        const db = firebase.firestore();
+        console.log('Firestore initialized successfully');
     } catch (error) {
-        showNotification('An error occurred. Please try again.', 'error');
-        console.error('Form submission error:', error);
+        console.error('Error initializing Firestore:', error);
+        return;
     }
-}
 
-function validateForm(form) {
-    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-    let isValid = true;
-    
-    inputs.forEach(input => {
-        removeErrorState(input);
-        
-        if (!input.value.trim()) {
-            isValid = false;
-            addErrorState(input);
-        } else if (input.type === 'email' && !isValidEmail(input.value)) {
-            isValid = false;
-            addErrorState(input, 'Please enter a valid email address');
+    // Mobile Navigation
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navWrapper = document.querySelector('.nav-wrapper');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function initializeMobileMenu() {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navWrapper.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navWrapper.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenuBtn.classList.remove('active');
+                navWrapper.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navWrapper.classList.remove('active');
+            });
+        });
+    }
+
+    // Form Handling
+    function initializeForms() {
+        console.log('Initializing forms');
+        const contactForm = document.getElementById('contactForm');
+        const newsletterForm = document.getElementById('newsletterForm');
+        const quickQuoteForm = document.getElementById('quickQuoteForm');
+
+        if (contactForm) {
+            console.log('Contact form found');
+            contactForm.addEventListener('submit', handleFormSubmit);
         }
-    });
-    
-    return isValid;
-}
-
-function addErrorState(input, message = 'This field is required') {
-    input.classList.add('error');
-    const errorMessage = document.createElement('div');
-    errorMessage.className = 'error-message';
-    errorMessage.textContent = message;
-    input.parentNode.appendChild(errorMessage);
-}
-
-function removeErrorState(input) {
-    input.classList.remove('error');
-    const errorMessage = input.parentNode.querySelector('.error-message');
-    if (errorMessage) {
-        errorMessage.remove();
+        if (newsletterForm) {
+            console.log('Newsletter form found');
+            newsletterForm.addEventListener('submit', handleFormSubmit);
+        }
+        if (quickQuoteForm) {
+            console.log('Quick quote form found');
+            quickQuoteForm.addEventListener('submit', handleFormSubmit);
+        }
     }
-}
 
-function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+    // Track form submission state
+    let isSubmitting = false;
+    let lastSubmissionTime = 0;
+    const SUBMISSION_COOLDOWN = 3000; // 3 seconds cooldown
 
-// FAQ Functionality
-function initializeFAQ() {
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
+    async function handleFormSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const submitButton = form.querySelector('button[type="submit"]');
         
-        question.addEventListener('click', () => {
-            const isOpen = item.classList.contains('active');
+        // Check if already submitting or in cooldown
+        const now = Date.now();
+        if (isSubmitting || (now - lastSubmissionTime) < SUBMISSION_COOLDOWN) {
+            console.log('Submission blocked: Too frequent or already processing');
+            showNotification('Please wait before submitting again', 'warning');
+            return;
+        }
+        
+        console.log('Form submission started:', form.id);
+        
+        if (!validateForm(form)) {
+            console.error('Form validation failed');
+            showNotification('Please fill in all required fields', 'error');
+            return;
+        }
+
+        try {
+            // Set submitting state
+            isSubmitting = true;
+            lastSubmissionTime = now;
             
-            // Close all other items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                    const otherAnswer = otherItem.querySelector('.faq-answer');
-                    otherAnswer.style.maxHeight = null;
+            // Update button state
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.classList.add('submitting');
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Log the data being submitted
+            console.log('Form data:', data);
+            
+            // Validate Firebase is initialized
+            if (!firebase || !firebase.firestore) {
+                console.error('Firebase is not initialized properly');
+                showNotification('System error: Firebase not initialized', 'error');
+                return;
+            }
+
+            // Get Firestore instance
+            const db = firebase.firestore();
+            console.log('Firestore instance:', db ? 'Available' : 'Not available');
+            
+            // Add timestamp
+            data.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+            
+            if (form.id === 'newsletterForm') {
+                console.log('Processing newsletter submission');
+                try {
+                    const docRef = await db.collection('newsletter').add({
+                        email: data.email,
+                        timestamp: data.timestamp
+                    });
+                    console.log('Newsletter document written with ID:', docRef.id);
+                } catch (error) {
+                    console.error('Error adding newsletter document:', error);
+                    throw error;
                 }
-            });
-            
-            // Toggle current item
-            item.classList.toggle('active');
-            if (!isOpen) {
-                answer.style.maxHeight = answer.scrollHeight + 'px';
             } else {
-                answer.style.maxHeight = null;
+                console.log('Processing lead submission');
+                // Handle contact form and quick quote submissions
+                data.type = form.id === 'quickQuoteForm' ? 'quick-quote' : 'contact';
+                try {
+                    const docRef = await db.collection('leads').add(data);
+                    console.log('Lead document written with ID:', docRef.id);
+                } catch (error) {
+                    console.error('Error adding lead document:', error);
+                    throw error;
+                }
             }
-        });
-    });
-}
+            
+            // Show success animation
+            submitButton.classList.remove('submitting');
+            submitButton.classList.add('success');
+            submitButton.innerHTML = '<i class="fas fa-check"></i> Submitted!';
+            
+            showNotification('Form submitted successfully!', 'success');
+            form.reset();
 
-// Notification System
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
+            // Reset button after delay
+            setTimeout(() => {
+                submitButton.disabled = false;
+                submitButton.classList.remove('success');
+                submitButton.innerHTML = originalButtonText;
+            }, 2000);
 
-    const container = document.querySelector('.notification-container') || createNotificationContainer();
-    container.appendChild(notification);
-
-    // Remove notification after 5 seconds
-    setTimeout(() => {
-        notification.classList.add('fade-out');
-        setTimeout(() => notification.remove(), 300);
-    }, 5000);
-}
-
-function createNotificationContainer() {
-    const container = document.createElement('div');
-    container.className = 'notification-container';
-    document.body.appendChild(container);
-    return container;
-}
-
-// Image Loading
-function handleImageLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.onload = () => img.classList.add('loaded');
-                observer.unobserve(img);
-            }
-        });
-    });
-
-    images.forEach(img => {
-        imageObserver.observe(img);
-        // Add error handling
-        img.onerror = () => {
-            img.src = 'images/fallback.jpg';
-            img.classList.add('error');
-        };
-    });
-}
-
-// Quick Quote Calculator
-function initializeQuoteCalculator() {
-    const calculator = document.getElementById('quoteCalculator');
-    const minimizeBtn = calculator.querySelector('.minimize-btn');
-    const coverageSlider = document.getElementById('coverageSlider');
-    const coverageValue = document.getElementById('coverageValue');
-    
-    // Initialize minimize button functionality
-    minimizeBtn.addEventListener('click', () => {
-        calculator.classList.toggle('minimized');
-    });
-
-    // Initialize slider functionality
-    if (coverageSlider && coverageValue) {
-        coverageSlider.addEventListener('input', (e) => {
-            const value = parseInt(e.target.value).toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                maximumFractionDigits: 0
-            });
-            coverageValue.textContent = value;
-        });
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showNotification(`Error: ${error.message}`, 'error');
+            
+            // Reset button on error
+            submitButton.disabled = false;
+            submitButton.classList.remove('submitting');
+            submitButton.innerHTML = originalButtonText;
+        } finally {
+            // Reset submission state
+            isSubmitting = false;
+        }
     }
-}
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+    function validateForm(form) {
+        console.log('Starting form validation');
+        const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            removeErrorState(input);
+            
+            if (!input.value.trim()) {
+                console.log('Empty required field:', input.name);
+                isValid = false;
+                addErrorState(input);
+            } else if (input.type === 'email' && !isValidEmail(input.value)) {
+                console.log('Invalid email:', input.value);
+                isValid = false;
+                addErrorState(input, 'Please enter a valid email address');
+            }
+        });
+        
+        console.log('Form validation result:', isValid ? 'Valid' : 'Invalid');
+        return isValid;
+    }
+
+    function addErrorState(input, message = 'This field is required') {
+        input.classList.add('error');
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = message;
+        input.parentNode.appendChild(errorMessage);
+    }
+
+    function removeErrorState(input) {
+        input.classList.remove('error');
+        const errorMessage = input.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function showNotification(message, type = 'info') {
+        console.log(`Showing notification: ${message} (${type})`);
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+
+        const container = document.querySelector('.notification-container') || createNotificationContainer();
+        container.appendChild(notification);
+
+        // Remove notification after 5 seconds
+        setTimeout(() => {
+            notification.classList.add('fade-out');
+            setTimeout(() => notification.remove(), 300);
+        }, 5000);
+    }
+
+    function createNotificationContainer() {
+        const container = document.createElement('div');
+        container.className = 'notification-container';
+        document.body.appendChild(container);
+        return container;
+    }
+
+    // Add CSS for button states
+    const style = document.createElement('style');
+    style.textContent = `
+        button[type="submit"] {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        button[type="submit"]:active {
+            transform: scale(0.95);
+        }
+        
+        button[type="submit"].submitting {
+            background-color: #666 !important;
+            cursor: not-allowed;
+        }
+        
+        button[type="submit"].success {
+            background-color: #28a745 !important;
+        }
+        
+        button[type="submit"] i {
+            margin-right: 8px;
+        }
+        
+        .notification.warning {
+            background-color: #ffc107;
+            color: #000;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize everything
+    console.log('Initializing all components');
     initializeMobileMenu();
     initializeForms();
-    initializeFAQ();
-    initializeQuoteCalculator();
-    handleImageLoading();
-
-    // Initialize AOS
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100,
-        disable: 'mobile'
-    });
 });

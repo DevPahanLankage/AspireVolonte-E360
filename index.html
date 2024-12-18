@@ -18,6 +18,25 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
     />
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script>
+      // Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDwuocjoPfy82Aaa6gkp1bOvolslqxtzjk",
+        authDomain: "aspire-volonte-514ce.firebaseapp.com",
+        projectId: "aspire-volonte-514ce",
+        storageBucket: "aspire-volonte-514ce.firebasestorage.app",
+        messagingSenderId: "370969632284",
+        appId: "1:370969632284:web:111c8223948891c87289d9",
+        measurementId: "G-TK60HNEMCN"
+      };
+      
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -40,7 +59,7 @@
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li class="dropdown">
-              <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
                 Insurance <i class="fas fa-chevron-down"></i>
               </button>
               <ul class="dropdown-menu" role="menu">
@@ -192,7 +211,7 @@
         <div class="container">
           <h2>Our Insurance Policies</h2>
           <div class="policies-grid">
-            <div class="policy-card" onclick="openPolicyModal('accident')">
+            <div class="policy-card" data-type="accident" onclick="openPolicyModal('accident')">
               <div class="policy-icon">
                 <i class="fas fa-band-aid"></i>
               </div>
@@ -207,7 +226,7 @@
               </div>
             </div>
 
-            <div class="policy-card" onclick="openPolicyModal('critical')">
+            <div class="policy-card" data-type="critical" onclick="openPolicyModal('critical')">
               <div class="policy-icon">
                 <i class="fas fa-heartbeat"></i>
               </div>
@@ -222,7 +241,7 @@
               </div>
             </div>
 
-            <div class="policy-card" onclick="openPolicyModal('cancer')">
+            <div class="policy-card" data-type="cancer" onclick="openPolicyModal('cancer')">
               <div class="policy-icon">
                 <i class="fas fa-ribbon"></i>
               </div>
@@ -237,7 +256,7 @@
               </div>
             </div>
 
-            <div class="policy-card" onclick="openPolicyModal('disability')">
+            <div class="policy-card" data-type="disability" onclick="openPolicyModal('disability')">
               <div class="policy-icon">
                 <i class="fas fa-wheelchair"></i>
               </div>
@@ -252,7 +271,7 @@
               </div>
             </div>
 
-            <div class="policy-card" onclick="openPolicyModal('life')">
+            <div class="policy-card" data-type="life" onclick="openPolicyModal('life')">
               <div class="policy-icon">
                 <i class="fas fa-heart"></i>
               </div>
@@ -267,7 +286,7 @@
               </div>
             </div>
 
-            <div class="policy-card" onclick="openPolicyModal('hospital')">
+            <div class="policy-card" data-type="hospital" onclick="openPolicyModal('hospital')">
               <div class="policy-icon">
                 <i class="fas fa-hospital"></i>
               </div>
@@ -514,14 +533,14 @@
           </p>
           <form class="newsletter-form" id="newsletterForm">
             <div class="form-group">
-              <input type="email" placeholder="Enter your email" required />
+              <input type="email" name="email" placeholder="Enter your email" required />
               <button type="submit">
                 Subscribe
                 <i class="fas fa-arrow-right"></i>
               </button>
             </div>
             <div class="form-checkbox">
-              <input type="checkbox" id="consent" required />
+              <input type="checkbox" id="consent" name="consent" required />
               <label for="consent"
                 >I agree to receive insurance updates and offers</label
               >
@@ -547,7 +566,7 @@
           </button>
         </div>
         <div class="calculator-body">
-          <form id="quickQuoteForm" onsubmit="submitQuickQuote(event)">
+          <form id="quickQuoteForm">
             <div class="form-group">
               <label>Insurance Type</label>
               <select required name="insuranceType">
@@ -562,7 +581,7 @@
             <div class="form-group">
               <label>Coverage Amount</label>
               <div class="range-slider">
-                <input type="range" min="100000" max="1000000" step="50000" value="500000" id="coverageSlider">
+                <input type="range" min="100000" max="1000000" step="50000" value="500000" id="coverageSlider" name="coverageAmount">
                 <output for="coverageSlider" id="coverageValue">$500,000</output>
               </div>
             </div>
@@ -598,9 +617,10 @@
                 <li><i class="fas fa-check"></i> Common insurance mistakes to avoid</li>
                 <li><i class="fas fa-check"></i> Expert tips for maximum coverage</li>
               </ul>
-              <form id="leadMagnetForm" onsubmit="submitLeadMagnet(event)">
+              <form id="leadMagnetForm">
                 <div class="form-group">
-                  <input type="email" required placeholder="Enter your email">
+                  <input type="email" name="email" required placeholder="Enter your email">
+                  <input type="hidden" name="type" value="guide-download">
                 </div>
                 <button type="submit" class="download-btn">
                   Download Free Guide <i class="fas fa-download"></i>
@@ -1040,5 +1060,8 @@
         // Initialize any other features here
       });
     </script>
+
+    <!-- Load main.js after all other scripts -->
+    <script src="scripts/main.js"></script>
   </body>
 </html>

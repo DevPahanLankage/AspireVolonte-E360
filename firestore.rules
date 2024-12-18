@@ -4,13 +4,16 @@ service cloud.firestore {
   match /databases/{database}/documents {
     // Allow write access to leads collection
     match /leads/{document} {
-      allow write: if true;
+      allow write: if request.resource.data.keys().hasAll(['timestamp']) 
+                   && request.resource.data.timestamp is timestamp;
       allow read: if false;
     }
     
     // Allow write access to newsletter collection
     match /newsletter/{document} {
-      allow write: if true;
+      allow write: if request.resource.data.keys().hasAll(['email', 'timestamp'])
+                   && request.resource.data.email is string
+                   && request.resource.data.timestamp is timestamp;
       allow read: if false;
     }
     
