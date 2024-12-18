@@ -1,0 +1,16 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow public read access to insurance guides
+    match /guides/{fileName} {
+      allow read: if true;  // Anyone can download guides
+      allow write: if false;  // Only admin can upload
+    }
+    
+    // Protect all other files
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+} 

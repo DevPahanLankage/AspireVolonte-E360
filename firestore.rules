@@ -1,0 +1,22 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow write access to leads collection
+    match /leads/{document} {
+      allow write: if true;
+      allow read: if false;
+    }
+    
+    // Allow write access to newsletter collection
+    match /newsletter/{document} {
+      allow write: if true;
+      allow read: if false;
+    }
+    
+    // Deny access to all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 

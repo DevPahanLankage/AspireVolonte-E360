@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aspire Volonte - Your Financial Advisor</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="nav-container">
+        <div class="logo">
+          <h1>Aspire<span class="accent">Volonte</span></h1>
+          <p class="tagline">YOUR FINANCIAL ADVISOR</p>
+        </div>
+        <div class="nav-wrapper">
+          <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li class="dropdown">
+              <a href="#policies" class="nav-link"
+                >Insurance <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="#health">Health Insurance</a></li>
+                <li><a href="#life">Life Insurance</a></li>
+                <li><a href="#critical">Critical Illness</a></li>
+                <li><a href="#disability">Disability Insurance</a></li>
+                <li><a href="#accident">Accident Insurance</a></li>
+                <li><a href="#cancer">Cancer Insurance</a></li>
+                <li><a href="#hospital">Hospital Insurance</a></li>
+              </ul>
+            </li>
+            <li><a href="#plant-tree" class="nav-link">Plant a Tree</a></li>
+            <li><a href="#contact" class="cta-button">Contact Us</a></li>
+          </ul>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="hero-section">
+        <div class="hero-background">
+          <div class="overlay"></div>
+          <div class="animated-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
+          <div class="shapes">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+          </div>
+        </div>
+        <div class="hero-content" data-aos="fade-up">
+          <h1 class="hero-title">
+            Secure Your Future with
+            <span class="gradient-text">Aspire Volonte</span>
+          </h1>
+          <p class="hero-subtitle">
+            Expert financial advice and insurance solutions tailored to your
+            needs
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="cta-button primary-btn shine-effect"
+              >Get Started</a
+            >
+            <a href="#about" class="cta-button secondary-btn"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="trust-badges">
+            <div class="badge">
+              <i class="fas fa-shield-alt"></i>
+              <span>100% Secure</span>
+            </div>
+            <div class="badge">
+              <i class="fas fa-check-circle"></i>
+              <span>Licensed</span>
+            </div>
+            <div class="badge">
+              <i class="fas fa-star"></i>
+              <span>Top Rated</span>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <div class="mouse"></div>
+          <span>Scroll to explore</span>
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="container">
+          <h2>About Aspire Volonte</h2>
+          <div class="about-text">
+            <p>
+              At Aspire Volonte, we understand that your financial security is
+              paramount. With years of experience in the insurance industry, we
+              provide expert guidance to protect what matters most to you.
+            </p>
+          </div>
+        </div>
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Personalized Insurance Solutions</h3>
+              <p>
+                Tailored insurance plans designed to meet your specific needs
+                and requirements.
+              </p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Expert Financial Advice</h3>
+              <p>
+                Professional guidance to help you make informed decisions about
+                your financial future.
+              </p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Sustainable Practices</h3>
+              <p>
+                Committed to environmental responsibility through our tree
+                planting initiative.
+              </p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <div class="feature-content">
+              <h3>24/7 Customer Support</h3>
+              <p>
+                Round-the-clock assistance to address your concerns and queries
+                anytime.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="policies" class="policies-section">
+        <div class="container">
+          <h2>Our Insurance Policies</h2>
+          <div class="policies-grid">
+            <div class="policy-card" onclick="openPolicyModal('health')">
+              <div class="policy-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <div class="policy-content">
+                <h3 class="policy-title">Health Insurance</h3>
+                <p class="policy-description">
+                  Comprehensive coverage for your medical needs
+                </p>
+                <div class="policy-cta">
+                  <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="policy-card" onclick="openPolicyModal('life')">
+              <div class="policy-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <div class="policy-content">
+                <h3 class="policy-title">Life Insurance</h3>
+                <p class="policy-description">
+                  Secure your family's financial future
+                </p>
+                <div class="policy-cta">
+                  <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="policy-card" onclick="openPolicyModal('critical')">
+              <div class="policy-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="policy-content">
+                <h3 class="policy-title">Critical Illness</h3>
+                <p class="policy-description">
+                  Protection against serious health conditions
+                </p>
+                <div class="policy-cta">
+                  <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="policy-card" onclick="openPolicyModal('disability')">
+              <div class="policy-icon">
+                <i class="fas fa-wheelchair"></i>
+              </div>
+              <div class="policy-content">
+                <h3 class="policy-title">Disability Insurance</h3>
+                <p class="policy-description">
+                  Income protection when you need it most
+                </p>
+                <div class="policy-cta">
+                  <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="policy-card" onclick="openPolicyModal('accident')">
+              <div class="policy-icon">
+                <i class="fas fa-band-aid"></i>
+              </div>
+              <div class="policy-content">
+                <h3 class="policy-title">Accident Insurance</h3>
+                <p class="policy-description">
+                  Coverage for slips, falls and accidents
+                </p>
+                <div class="policy-cta">
+                  <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="policy-card" onclick="openPolicyModal('cancer')">
+              <div class="policy-icon">
+                <i class="fas fa-ribbon"></i>
+              </div>
+              <div class="policy-content">
+                <h3 class="policy-title">Cancer Insurance</h3>
+                <p class="policy-description">
+                  A plan for the worst while hoping for the best
+                </p>
+                <div class="policy-cta">
+                  <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="policy-card" onclick="openPolicyModal('hospital')">
+              <div class="policy-icon">
+                <i class="fas fa-hospital"></i>
+              </div>
+              <div class="policy-content">
+                <h3 class="policy-title">Hospital Insurance</h3>
+                <p class="policy-description">
+                  Offsetting your out-of-pocket expenses from a covered hospital stay
+                </p>
+                <div class="policy-cta">
+                  <button class="learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Policy Modal -->
+      <div id="policyModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <div class="modal-header">
+            <div class="modal-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2 id="modalTitle"></h2>
+          </div>
+          <div class="modal-body">
+            <div id="modalDescription"></div>
+            <div class="coverage-list" id="coverageList"></div>
+            <div class="benefits-grid" id="benefitsGrid"></div>
+          </div>
+          <div class="modal-footer">
+            <button class="get-quote-btn" onclick="showLeadForm()">
+              Get a Quote <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <section id="plant-tree" class="policy-tree-section">
+        <div class="container">
+          <div class="impact-counter" data-aos="fade-up">
+            <div class="trees-count" id="policy-trees-count">1,234</div>
+            <p class="impact-label">Trees Planted Through Policy Purchases</p>
+          </div>
+
+          <div class="environmental-impact">
+            <div class="impact-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="impact-icon">
+                <i class="fas fa-tree"></i>
+              </div>
+              <div class="impact-number">1</div>
+              <p class="impact-text">Tree Planted<br />Per Policy</p>
+            </div>
+
+            <div class="impact-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="impact-icon">
+                <i class="fas fa-cloud"></i>
+              </div>
+              <div class="impact-number">2.5K</div>
+              <p class="impact-text">kg of CO₂<br />Absorbed Annually</p>
+            </div>
+
+            <div class="impact-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="impact-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <div class="impact-number">150+</div>
+              <p class="impact-text">Local Communities<br />Supported</p>
+            </div>
+          </div>
+
+          <div class="tree-info">
+            <div class="tree-info-content" data-aos="fade-right">
+              <h2>Growing a Sustainable Future Together</h2>
+              <p>
+                At Aspire Volonte, we believe in protecting both you and our planet.
+                That's why for every policy purchased, we plant a tree in your
+                name. Join us in creating a greener future while securing yours.
+              </p>
+
+              <ul class="tree-benefits">
+                <li class="tree-benefit-item">
+                  <div class="tree-benefit-icon">
+                    <i class="fas fa-seedling"></i>
+                  </div>
+                  <p class="tree-benefit-text">
+                    Native species planted to support local ecosystems
+                  </p>
+                </li>
+                <li class="tree-benefit-item">
+                  <div class="tree-benefit-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <p class="tree-benefit-text">
+                    Supporting local communities through sustainable forestry
+                  </p>
+                </li>
+                <li class="tree-benefit-item">
+                  <div class="tree-benefit-icon">
+                    <i class="fas fa-certificate"></i>
+                  </div>
+                  <p class="tree-benefit-text">
+                    Receive a digital certificate for your contribution
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tree-illustration" data-aos="fade-left">
+              <img
+                src="images/tree-planting.svg"
+                alt="Tree Planting Initiative"
+                class="tree-image"
+              />
+              <div class="policy-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>1 Policy = 1 Tree</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="faq-section">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <p class="section-subtitle">Find answers to common insurance and investment questions</p>
+          
+          <div class="faq-grid">
+            <div class="faq-item" data-aos="fade-up">
+              <div class="faq-question">
+                <h3>What types of insurance do I need?</h3>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+              </div>
+              <div class="faq-answer">
+                <p>The insurance you need depends on your life stage and circumstances. Generally, we recommend having health insurance as a foundation, life insurance if you have dependents, and critical illness/disability insurance to protect your income.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+              <div class="faq-question">
+                <h3>How much life insurance coverage should I get?</h3>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+              </div>
+              <div class="faq-answer">
+                <p>A general rule is 10-15 times your annual income, but this varies based on your debts, dependents, and future financial obligations. Our advisors can help you calculate the right amount for your situation.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+              <div class="faq-question">
+                <h3>What's the difference between term and whole life insurance?</h3>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+              </div>
+              <div class="faq-answer">
+                <p>Term life insurance provides coverage for a specific period (e.g., 20 years) with lower premiums. Whole life insurance provides lifetime coverage and builds cash value but has higher premiums.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+              <div class="faq-question">
+                <h3>Can I have multiple insurance policies?</h3>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+              </div>
+              <div class="faq-answer">
+                <p>Yes, you can have multiple insurance policies. In fact, it's often recommended to have different types of coverage to create a comprehensive protection plan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Investment Accounts Section -->
+      <section id="investment-accounts" class="investment-section">
+        <div class="container">
+          <h2>Understanding Investment Accounts</h2>
+          <p class="section-subtitle">Make informed decisions about your financial future</p>
+
+          <div class="investment-grid">
+            <div class="investment-card tfsa" data-aos="fade-right">
+              <div class="investment-header">
+                <div class="investment-icon">
+                  <i class="fas fa-piggy-bank"></i>
+                </div>
+                <h3>Tax-Free Savings Account (TFSA)</h3>
+              </div>
+              <div class="investment-content">
+                <p class="investment-description">
+                  A TFSA allows you to earn investment income tax-free throughout your lifetime. Ideal for both short and long-term savings goals.
+                </p>
+                <ul class="investment-features">
+                  <li><i class="fas fa-check"></i> Tax-free investment growth</li>
+                  <li><i class="fas fa-check"></i> Flexible withdrawal options</li>
+                  <li><i class="fas fa-check"></i> No tax on withdrawals</li>
+                  <li><i class="fas fa-check"></i> Contribution room reinstated after withdrawal</li>
+                </ul>
+                <div class="contribution-info">
+                  <span class="label">2024 Contribution Limit:</span>
+                  <span class="amount">$7,000</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="investment-card rrsp" data-aos="fade-left">
+              <div class="investment-header">
+                <div class="investment-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Registered Retirement Savings Plan (RRSP)</h3>
+              </div>
+              <div class="investment-content">
+                <p class="investment-description">
+                  An RRSP is designed to help you save for retirement while providing immediate tax benefits through contribution deductions.
+                </p>
+                <ul class="investment-features">
+                  <li><i class="fas fa-check"></i> Tax-deductible contributions</li>
+                  <li><i class="fas fa-check"></i> Tax-deferred growth</li>
+                  <li><i class="fas fa-check"></i> Higher contribution limits</li>
+                  <li><i class="fas fa-check"></i> Ideal for retirement planning</li>
+                </ul>
+                <div class="contribution-info">
+                  <span class="label">2024 Contribution Limit:</span>
+                  <span class="amount">18% of previous year's income</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog Section -->
+      <section id="blog" class="blog-section">
+        <div class="container">
+          <h2>Financial Insights Blog</h2>
+          <p class="section-subtitle">Stay informed with our latest articles and tips</p>
+
+          <div class="blog-grid">
+            <article class="blog-card" data-aos="fade-up">
+              <div class="blog-image">
+                <img src="images/blog-1.jpg" alt="Investment Strategies" />
+                <div class="blog-category">Investing</div>
+              </div>
+              <div class="blog-content">
+                <h3>Essential Investment Strategies for Beginners</h3>
+                <p>Learn the fundamental principles of investing and how to build a strong investment portfolio...</p>
+                <div class="blog-meta">
+                  <span><i class="far fa-calendar"></i> March 15, 2024</span>
+                  <span><i class="far fa-clock"></i> 5 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="blog-image">
+                <img src="images/blog-2.jpg" alt="Insurance Tips" />
+                <div class="blog-category">Insurance</div>
+              </div>
+              <div class="blog-content">
+                <h3>How to Choose the Right Insurance Coverage</h3>
+                <p>Understanding different insurance options and selecting the best coverage for your needs...</p>
+                <div class="blog-meta">
+                  <span><i class="far fa-calendar"></i> March 12, 2024</span>
+                  <span><i class="far fa-clock"></i> 4 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="blog-image">
+                <img src="images/blog-3.jpg" alt="Retirement Planning" />
+                <div class="blog-category">Retirement</div>
+              </div>
+              <div class="blog-content">
+                <h3>Planning for a Comfortable Retirement</h3>
+                <p>Key strategies and tips for building a secure retirement fund that meets your lifestyle goals...</p>
+                <div class="blog-meta">
+                  <span><i class="far fa-calendar"></i> March 10, 2024</span>
+                  <span><i class="far fa-clock"></i> 6 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <div class="blog-cta">
+            <a href="#" class="view-all-btn">View All Articles <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Get Expert Insurance Advice</h2>
+            <p class="section-subtitle">
+              Schedule a consultation with our insurance specialists
+            </p>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-info">
+              <div class="info-header">
+                <h3>Why Choose Us?</h3>
+                <p>
+                  Get personalized insurance solutions from our experienced
+                  advisors
+                </p>
+              </div>
+              <div class="contact-benefits">
+                <div class="benefit-item">
+                  <div class="benefit-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="benefit-content">
+                    <h4>Expert Consultation</h4>
+                    <p>Free consultation with licensed insurance advisors</p>
+                  </div>
+                </div>
+                <div class="benefit-item">
+                  <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div class="benefit-content">
+                    <h4>Tailored Solutions</h4>
+                    <p>Customized insurance plans for your specific needs</p>
+                  </div>
+                </div>
+                <div class="benefit-item">
+                  <div class="benefit-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="benefit-content">
+                    <h4>Quick Response</h4>
+                    <p>Get a callback within 24 hours</p>
+                  </div>
+                </div>
+              </div>
+              <div class="contact-details">
+                <div class="detail-item">
+                  <i class="fas fa-phone"></i>
+                  <div class="detail-content">
+                    <h4>Phone</h4>
+                    <p>(555) 123-4567</p>
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-envelope"></i>
+                  <div class="detail-content">
+                    <h4>Email</h4>
+                    <p>info@vitalcare.com</p>
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-location-dot"></i>
+                  <div class="detail-content">
+                    <h4>Office</h4>
+                    <p>123 Insurance Street<br />Financial District</p>
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-clock"></i>
+                  <div class="detail-content">
+                    <h4>Hours</h4>
+                    <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form id="contactForm" class="contact-form">
+              <div class="form-header">
+                <h3>Schedule a Callback</h3>
+                <p>Fill out the form below and we'll get back to you</p>
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+                <div class="form-group">
+                  <label for="service">Insurance Type</label>
+                  <select id="service" name="service" required>
+                    <option value="">Select Insurance Type</option>
+                    <option value="health">Health Insurance</option>
+                    <option value="life">Life Insurance</option>
+                    <option value="critical">Critical Illness</option>
+                    <option value="disability">Disability Insurance</option>
+                    <option value="accident">Accident Insurance</option>
+                    <option value="cancer">Cancer Insurance</option>
+                    <option value="hospital">Hospital Insurance</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label for="contactTime">Preferred Contact Time</label>
+                  <select id="contactTime" name="contactTime" required>
+                    <option value="">Select Time</option>
+                    <option value="morning">Morning (9AM - 12PM)</option>
+                    <option value="afternoon">Afternoon (12PM - 4PM)</option>
+                    <option value="evening">Evening (4PM - 6PM)</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label for="message">Message (Optional)</label>
+                  <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="submit-btn">
+                  <span>Schedule Callback</span>
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="form-disclaimer">
+                  By submitting this form, you agree to our privacy policy and
+                  consent to being contacted about insurance services.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter-section">
+        <div class="newsletter-content">
+          <h2>Stay Updated with Insurance Tips</h2>
+          <p>
+            Get weekly insights on insurance, financial planning, and exclusive
+            offers.
+          </p>
+          <form class="newsletter-form" id="newsletterForm">
+            <div class="form-group">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">
+                Subscribe
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+            <div class="form-checkbox">
+              <input type="checkbox" id="consent" required />
+              <label for="consent"
+                >I agree to receive insurance updates and offers</label
+              >
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div class="chat-widget" onclick="showLeadPopup('chat')">
+        <div class="chat-bubble">
+          <i class="fas fa-comment-dots"></i>
+          <span>Chat with an Expert</span>
+        </div>
+        <div class="chat-notification">1</div>
+      </div>
+
+      <!-- Floating Quote Calculator -->
+      <div class="quote-calculator" id="quoteCalculator">
+        <div class="calculator-header">
+          <h3><i class="fas fa-calculator"></i> Quick Quote Calculator</h3>
+          <button class="minimize-btn" onclick="toggleCalculator()">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+        <div class="calculator-body">
+          <form id="quickQuoteForm" onsubmit="submitQuickQuote(event)">
+            <div class="form-group">
+              <label>Insurance Type</label>
+              <select required name="insuranceType">
+                <option value="">Select Insurance Type</option>
+                <option value="life">Life Insurance</option>
+                <option value="health">Health Insurance</option>
+                <option value="critical">Critical Illness</option>
+                <option value="disability">Disability Insurance</option>
+                <option value="accident">Accident Insurance</option>
+                <option value="cancer">Cancer Insurance</option>
+                <option value="hospital">Hospital Insurance</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Coverage Amount</label>
+              <div class="range-slider">
+                <input type="range" min="100000" max="1000000" step="50000" value="500000" id="coverageSlider">
+                <output for="coverageSlider" id="coverageValue">$500,000</output>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Age</label>
+              <input type="number" min="18" max="75" required name="age">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" required name="email" placeholder="Your email for quote">
+            </div>
+            <button type="submit" class="quote-submit-btn">
+              Get Personalized Quote <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Lead Magnet Modal -->
+      <div id="leadMagnetModal" class="modal lead-magnet-modal">
+        <div class="modal-content">
+          <span class="close-modal" onclick="closeMagnetModal()">&times;</span>
+          <div class="lead-magnet-content">
+            <div class="lead-magnet-image">
+              <img src="images/insurance-guide.jpg" alt="Free Insurance Guide">
+            </div>
+            <div class="lead-magnet-text">
+              <h3>Free Insurance Planning Guide 2024</h3>
+              <p>Download our comprehensive guide to understand:</p>
+              <ul>
+                <li><i class="fas fa-check"></i> How to choose the right insurance</li>
+                <li><i class="fas fa-check"></i> Cost-saving strategies</li>
+                <li><i class="fas fa-check"></i> Common insurance mistakes to avoid</li>
+                <li><i class="fas fa-check"></i> Expert tips for maximum coverage</li>
+              </ul>
+              <form id="leadMagnetForm" onsubmit="submitLeadMagnet(event)">
+                <div class="form-group">
+                  <input type="email" required placeholder="Enter your email">
+                </div>
+                <button type="submit" class="download-btn">
+                  Download Free Guide <i class="fas fa-download"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-info">
+          <a href="/" class="footer-logo">Aspire Volonte</a>
+          <p class="footer-description">
+            Providing comprehensive insurance solutions to protect what matters
+            most. Our commitment is to deliver peace of mind through reliable
+            coverage and exceptional service.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-link"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Insurance</h4>
+          <ul>
+            <li><a href="#health"><i class="fas fa-chevron-right"></i>Health Insurance</a></li>
+            <li><a href="#life"><i class="fas fa-chevron-right"></i>Life Insurance</a></li>
+            <li><a href="#critical"><i class="fas fa-chevron-right"></i>Critical Illness</a></li>
+            <li><a href="#disability"><i class="fas fa-chevron-right"></i>Disability Insurance</a></li>
+            <li><a href="#accident"><i class="fas fa-chevron-right"></i>Accident Insurance</a></li>
+            <li><a href="#cancer"><i class="fas fa-chevron-right"></i>Cancer Insurance</a></li>
+            <li><a href="#hospital"><i class="fas fa-chevron-right"></i>Hospital Insurance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i>About Us</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i>Our Team</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i>Careers</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i>Contact Us</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i>FAQ</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i>Claims</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i>Resources</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i>Help Center</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <div class="footer-copyright">
+            © 2024 Aspire Volonte Insurance. All rights reserved.
+          </div>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
+
+      // Initialize Swiper
+      const swiper = new Swiper('.testimonials-slider', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
+
+      // Initialize Vanilla Tilt
+      VanillaTilt.init(document.querySelectorAll(".policy-card"), {
+        max: 15,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+      });
+
+      // Animate Statistics
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const countUp = new CountUp(counter, 0, target, 0, 2.5, {
+          useEasing: true,
+          useGrouping: true,
+        });
+        
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            countUp.start();
+            observer.unobserve(counter);
+          }
+        });
+        
+        observer.observe(counter);
+      });
+
+      // Floating Navigation
+      const header = document.querySelector('.main-header');
+      let lastScroll = 0;
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+          header.classList.remove('scroll-up');
+          return;
+        }
+        
+        if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+          header.classList.remove('scroll-up');
+          header.classList.add('scroll-down');
+        } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+          header.classList.remove('scroll-down');
+          header.classList.add('scroll-up');
+        }
+        lastScroll = currentScroll;
+      });
+
+      // Policy details object
+      const policyDetails = {
+        health: {
+          title: "Health Insurance",
+          icon: "heartbeat",
+          description: "Comprehensive health coverage for you and your family, ensuring access to quality medical care when you need it most.",
+          coveragePoints: [
+            "Hospitalization and surgery coverage",
+            "Outpatient care and specialist visits",
+            "Prescription drug coverage",
+            "Preventive care and wellness programs",
+            "Emergency medical services"
+          ],
+          benefits: [
+            {
+              title: "Wide Network Access",
+              description: "Access to a large network of healthcare providers and facilities"
+            },
+            {
+              title: "Flexible Plans",
+              description: "Choose from various coverage levels to suit your needs"
+            },
+            {
+              title: "Wellness Programs",
+              description: "Access to preventive care and wellness initiatives"
+            }
+          ]
+        },
+        life: {
+          title: "Life Insurance",
+          icon: "heart",
+          description: "Secure your family's financial future with our comprehensive life insurance plans that provide peace of mind and protection.",
+          coveragePoints: [
+            "Death benefit protection",
+            "Terminal illness benefit",
+            "Cash value accumulation",
+            "Premium waiver option",
+            "Optional riders for enhanced coverage"
+          ],
+          benefits: [
+            {
+              title: "Flexible Coverage",
+              description: "Choose between term and permanent life insurance options"
+            },
+            {
+              title: "Living Benefits",
+              description: "Access benefits for qualifying terminal illness cases"
+            },
+            {
+              title: "Family Protection",
+              description: "Optional coverage for spouse and children"
+            }
+          ]
+        },
+        critical: {
+          title: "Critical Illness Insurance",
+          icon: "shield-alt",
+          description: "Financial protection against major illnesses, helping you focus on recovery without worrying about expenses.",
+          coveragePoints: [
+            "Heart attack and stroke coverage",
+            "Cancer diagnosis benefit",
+            "Organ failure protection",
+            "Multiple sclerosis coverage",
+            "Recovery support benefits"
+          ],
+          benefits: [
+            {
+              title: "Lump Sum Payment",
+              description: "Receive a one-time payment upon diagnosis"
+            },
+            {
+              title: "Multiple Claims",
+              description: "Coverage for multiple different conditions"
+            },
+            {
+              title: "Recovery Support",
+              description: "Additional benefits for recovery and rehabilitation"
+            }
+          ]
+        },
+        disability: {
+          title: "Disability Insurance",
+          icon: "wheelchair",
+          description: "Protect your income if you're unable to work due to a disability, ensuring financial stability for you and your family.",
+          coveragePoints: [
+            "Long-term disability coverage",
+            "Short-term disability options",
+            "Own occupation protection",
+            "Partial disability benefits",
+            "Rehabilitation support"
+          ],
+          benefits: [
+            {
+              title: "Income Replacement",
+              description: "Up to 60% of your regular income protected"
+            },
+            {
+              title: "Flexible Terms",
+              description: "Choose your benefit period and waiting period"
+            },
+            {
+              title: "Return to Work",
+              description: "Support for workplace reintegration"
+            }
+          ]
+        },
+        accident: {
+          title: "Accident Insurance",
+          icon: "band-aid",
+          description: "Our Accident Insurance provides comprehensive coverage for unexpected injuries, giving you peace of mind and financial protection when accidents occur.",
+          coveragePoints: [
+            "24/7 coverage for accidental injuries",
+            "Emergency room and hospital stays",
+            "Physical therapy and rehabilitation",
+            "Ambulance services",
+            "Fractures and dislocations"
+          ],
+          benefits: [
+            {
+              title: "Immediate Coverage",
+              description: "No waiting period - coverage starts as soon as your policy is active"
+            },
+            {
+              title: "Direct Payment",
+              description: "Benefits paid directly to you, not the healthcare provider"
+            },
+            {
+              title: "Family Coverage",
+              description: "Optional coverage for spouse and dependents"
+            }
+          ]
+        },
+        cancer: {
+          title: "Cancer Insurance",
+          icon: "ribbon",
+          description: "Specialized coverage for cancer-related expenses, providing financial support throughout treatment and recovery.",
+          coveragePoints: [
+            "Cancer diagnosis and treatment",
+            "Experimental treatments",
+            "Hospital stays",
+            "Radiation and chemotherapy",
+            "Transportation and lodging"
+          ],
+          benefits: [
+            {
+              title: "Comprehensive Coverage",
+              description: "Covers various types of cancer treatments"
+            },
+            {
+              title: "Additional Benefits",
+              description: "Coverage for second opinions and experimental treatments"
+            },
+            {
+              title: "Family History",
+              description: "Coverage available regardless of family history"
+            }
+          ]
+        },
+        hospital: {
+          title: "Hospital Insurance",
+          icon: "hospital",
+          description: "Additional coverage for hospital stays, helping you manage out-of-pocket expenses not covered by traditional health insurance.",
+          coveragePoints: [
+            "Hospital admission benefits",
+            "Daily hospital confinement",
+            "ICU coverage",
+            "Surgery benefits",
+            "Recovery care"
+          ],
+          benefits: [
+            {
+              title: "Daily Benefits",
+              description: "Fixed cash benefit for each day in hospital"
+            },
+            {
+              title: "No Network Restrictions",
+              description: "Use any hospital of your choice"
+            },
+            {
+              title: "Family Coverage",
+              description: "Optional coverage for entire family"
+            }
+          ]
+        }
+      };
+
+      // Modal functionality
+      const modal = document.getElementById('policyModal');
+      const closeBtn = document.getElementsByClassName('close-modal')[0];
+
+      function openPolicyModal(policyType) {
+        const policy = policyDetails[policyType];
+        const modalContent = document.querySelector('.modal-content');
+        
+        // Set the policy type as a data attribute for styling
+        modalContent.setAttribute('data-policy', policyType);
+        
+        document.getElementById('modalTitle').textContent = policy.title;
+        document.getElementById('modalDescription').innerHTML = `<p>${policy.description}</p>`;
+        
+        // Update modal icon
+        const modalIcon = document.querySelector('.modal-icon i');
+        modalIcon.className = `fas fa-${policy.icon}`;
+
+        // Generate coverage list
+        const coverageList = document.getElementById('coverageList');
+        coverageList.innerHTML = `
+          <h3>Coverage Includes:</h3>
+          <ul>
+            ${policy.coveragePoints.map(point => `<li><i class="fas fa-check"></i>${point}</li>`).join('')}
+          </ul>
+        `;
+
+        // Generate benefits grid
+        const benefitsGrid = document.getElementById('benefitsGrid');
+        benefitsGrid.innerHTML = `
+          <h3>Key Benefits:</h3>
+          <div class="benefits-cards">
+            ${policy.benefits.map(benefit => `
+              <div class="benefit-card">
+                <h4>${benefit.title}</h4>
+                <p>${benefit.description}</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+
+      closeBtn.onclick = function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      function showLeadForm() {
+        // Implement lead form functionality
+        console.log('Show lead form');
+      }
+
+      // FAQ Toggle Functionality
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const faqItem = question.parentElement;
+          faqItem.classList.toggle('active');
+        });
+      });
+
+      // Quote Calculator Functionality
+      let coverageSlider = document.getElementById('coverageSlider');
+      const coverageValue = document.getElementById('coverageValue');
+      
+      if (coverageSlider) {
+        coverageSlider.addEventListener('input', (e) => {
+          const value = parseInt(e.target.value).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0
+          });
+          coverageValue.textContent = value;
+        });
+      }
+
+      function toggleCalculator() {
+        const calculator = document.getElementById('quoteCalculator');
+        calculator.classList.toggle('minimized');
+      }
+
+      function submitQuickQuote(event) {
+        event.preventDefault();
+        // Add your quote submission logic here
+        alert('Thank you! A representative will contact you shortly with your personalized quote.');
+      }
+
+      // Lead Magnet Modal
+      setTimeout(() => {
+        if (!sessionStorage.getItem('leadMagnetShown')) {
+          document.getElementById('leadMagnetModal').style.display = 'block';
+          sessionStorage.setItem('leadMagnetShown', 'true');
+        }
+      }, 30000); // Show after 30 seconds
+
+      function closeMagnetModal() {
+        document.getElementById('leadMagnetModal').style.display = 'none';
+      }
+
+      function submitLeadMagnet(event) {
+        event.preventDefault();
+        const email = event.target.querySelector('input[type="email"]').value;
+        
+        // Store lead magnet downloads in the leads collection with type='guide-download'
+        db.collection('leads').add({
+          type: 'guide-download',
+          email: email,
+          timestamp: new Date()
+        })
+        .then(() => {
+          alert('Thank you! Check your email for the download link.');
+          closeMagnetModal();
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('Sorry, there was an error processing your request. Please try again.');
+        });
+      }
+
+      // Newsletter form submission
+      document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = this.querySelector('input[type="email"]').value;
+        const consent = this.querySelector('#consent').checked;
+
+        if (!consent) {
+          alert('Please agree to receive updates and offers.');
+          return;
+        }
+
+        try {
+          await db.collection('newsletter').add({
+            email,
+            consent,
+            timestamp: new Date()
+          });
+          alert('Thank you for subscribing to our newsletter!');
+          this.reset();
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Sorry, there was an error subscribing. Please try again.');
+        }
+      });
+
+      // Contact form submission
+      document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = {
+          type: 'contact',
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          insuranceType: document.getElementById('service').value,
+          contactTime: document.getElementById('contactTime').value,
+          message: document.getElementById('message').value,
+          timestamp: new Date()
+        };
+
+        try {
+          await db.collection('leads').add(formData);
+          alert('Thank you! Your form has been submitted successfully.');
+          this.reset();
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Sorry, there was an error submitting your form. Please try again.');
+        }
+      });
+
+      // Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDwuocjoPfy82Aaa6gkp1bOvolslqxtzjk",
+        authDomain: "aspire-volonte-514ce.firebaseapp.com",
+        projectId: "aspire-volonte-514ce",
+        storageBucket: "aspire-volonte-514ce.firebasestorage.app",
+        messagingSenderId: "370969632284",
+        appId: "1:370969632284:web:111c8223948891c87289d9",
+        measurementId: "G-TK60HNEMCN"
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const analytics = firebase.analytics();
+      const db = firebase.firestore();
+
+      // Initialize all interactive features
+      document.addEventListener('DOMContentLoaded', function() {
+        // FAQ toggles
+        document.querySelectorAll('.faq-question').forEach(question => {
+          question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            faqItem.classList.toggle('active');
+          });
+        });
+
+        // Calculator widget toggle
+        const calculator = document.getElementById('quoteCalculator');
+        if (calculator) {
+          document.querySelector('.minimize-btn').addEventListener('click', () => {
+            calculator.classList.toggle('minimized');
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
