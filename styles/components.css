@@ -333,7 +333,7 @@ img.error {
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.3s ease;
-    overflow-y: auto;
+    overflow: hidden;
     padding: 1rem 0;
 }
 
@@ -345,53 +345,155 @@ img.error {
 }
 
 .modal-content {
-    background: white;
-    border-radius: 12px;
-    width: 85%;
-    max-width: 450px;
+    background: #fff;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 85vh;
+    margin: auto;
     position: relative;
-    transform: translateY(20px);
+    transform: translateY(50px);
     opacity: 0;
-    transition: all 0.3s ease;
-    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-header {
-    padding: 1rem;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 12px 12px 0 0;
+    padding: 1.2rem;
     position: relative;
-    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.modal-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    opacity: 0.1;
 }
 
 .modal-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--primary-color);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 0.5rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 0.8rem;
+    background: currentColor;
 }
 
 .modal-icon i {
-    font-size: 1rem;
-    color: white;
+    font-size: 32px;
+    color: #fff;
 }
 
 .modal-title {
-    font-size: 1.25rem;
-    margin: 0 0 0.25rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    margin: 0;
+    position: relative;
 }
 
 .modal-subtitle {
-    font-size: 0.8rem;
+    margin-top: 0.5rem;
     opacity: 0.9;
+    position: relative;
+}
+
+.modal-body {
+    padding: 1.2rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.coverage-item {
+    padding: 1.2rem;
+    border-radius: 10px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.coverage-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.coverage-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.coverage-icon i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.coverage-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+}
+
+.coverage-description {
+    font-size: 0.9rem;
+    color: #666;
     margin: 0;
+}
+
+.policy-features {
+    margin-top: 2rem;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.feature-item i {
+    color: currentColor;
+}
+
+.get-quote-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.get-quote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .close-modal {
@@ -400,139 +502,66 @@ img.error {
     right: 1rem;
     background: none;
     border: none;
-    color: white;
-    font-size: 2rem;
+    color: #fff;
+    font-size: 1.5rem;
     cursor: pointer;
-    padding: 0.5rem;
-    line-height: 1;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.close-modal:hover {
-    opacity: 1;
-}
-
-.modal-body {
-    padding: 1rem;
-}
-
-.coverage-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-.coverage-item {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 0.75rem;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.coverage-item:hover {
-    transform: translateY(-5px);
-}
-
-.coverage-icon {
-    width: 32px;
-    height: 32px;
-    background: var(--primary-color);
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 0.5rem;
-}
-
-.coverage-icon i {
-    font-size: 1rem;
-    color: white;
-}
-
-.coverage-title {
-    font-size: 0.9rem;
-    margin: 0 0 0.25rem;
-    color: var(--text-primary);
-}
-
-.coverage-description {
-    font-size: 0.75rem;
-    color: #666;
-    margin: 0;
-    line-height: 1.3;
-}
-
-.policy-features {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 1rem;
-    margin-top: 0.75rem;
-}
-
-.policy-features h3 {
-    font-size: 1rem;
-    margin: 0 0 0.75rem;
-    color: var(--text-primary);
-}
-
-.feature-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-}
-
-.feature-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    padding: 0.5rem;
-    background: white;
-    border-radius: 6px;
-}
-
-.feature-item i {
-    color: var(--primary-color);
-}
-
-.get-quote-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
 }
 
-.get-quote-btn:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
 }
 
-@media (max-width: 480px) {
-    .modal-content {
-        width: 92%;
-        margin: 0.5rem auto;
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
     }
-    
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     .coverage-grid {
         grid-template-columns: 1fr;
     }
     
-    .feature-list {
-        grid-template-columns: 1fr;
+    .modal-content {
+        max-height: 90vh;
+    }
+
+    .modal-header {
+        padding: 1rem;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-title {
+        font-size: 1.3rem;
+    }
+
+    .modal-icon {
+        width: 45px;
+        height: 45px;
     }
 }
 
@@ -647,6 +676,292 @@ img.error {
     
     .about-section h2 {
         font-size: 2rem;
+    }
+}
+
+/* Policy Cards */
+.policy-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.policy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Theme colors for different insurance types */
+.policy-card[data-type="accident"]::before { background: #FF8C00; }
+.policy-card[data-type="critical"]::before { background: #E91E63; }
+.policy-card[data-type="cancer"]::before { background: #E91E63; }
+.policy-card[data-type="disability"]::before { background: #009688; }
+.policy-card[data-type="life"]::before { background: #673AB7; }
+.policy-card[data-type="hospital"]::before { background: #1976D2; }
+
+.policy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.policy-card:hover::before {
+    height: 100%;
+    opacity: 0.1;
+}
+
+.policy-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.policy-card[data-type="accident"] .policy-icon { background: #FF8C00; }
+.policy-card[data-type="critical"] .policy-icon { background: #E91E63; }
+.policy-card[data-type="cancer"] .policy-icon { background: #E91E63; }
+.policy-card[data-type="disability"] .policy-icon { background: #009688; }
+.policy-card[data-type="life"] .policy-icon { background: #673AB7; }
+.policy-card[data-type="hospital"] .policy-icon { background: #1976D2; }
+
+.policy-icon i {
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Policy Modal */
+.policy-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.policy-modal.active {
+    display: flex;
+    animation: modalFadeIn 0.3s forwards;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    overflow: hidden;
+}
+
+.policy-modal.active .modal-content {
+    animation: modalSlideIn 0.5s 0.1s forwards;
+}
+
+.modal-header {
+    padding: 2rem;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+}
+
+.modal-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    opacity: 0.1;
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: currentColor;
+}
+
+.modal-icon i {
+    font-size: 32px;
+    color: #fff;
+}
+
+.modal-title {
+    font-size: 2rem;
+    margin: 0;
+    position: relative;
+}
+
+.modal-subtitle {
+    margin-top: 0.5rem;
+    opacity: 0.9;
+    position: relative;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.coverage-item {
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.coverage-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.coverage-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.coverage-icon i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.coverage-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+}
+
+.coverage-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.policy-features {
+    margin-top: 2rem;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.feature-item i {
+    color: currentColor;
+}
+
+.get-quote-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.get-quote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .coverage-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
     }
 }
  
