@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtn = modal.querySelector('.close-modal');
     const courseLinks = document.querySelectorAll('.course-cta');
 
-    // Course data (you can move this to a separate JSON file later)
+    // Course data
     const courseData = {
         'financial-planning': {
             title: 'Financial Planning Mastery',
@@ -23,7 +23,60 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             ]
         },
-        // Add other course data here
+        'insurance-fundamentals': {
+            title: 'Insurance Industry Fundamentals',
+            features: [
+                { icon: 'fa-clock', text: '8 weeks course' },
+                { icon: 'fa-video', text: '20 video lessons' },
+                { icon: 'fa-certificate', text: 'Industry certification' }
+            ],
+            curriculum: [
+                {
+                    title: 'Module 1: Insurance Basics',
+                    lessons: ['Types of Insurance', 'Policy Components', 'Insurance Markets']
+                },
+                {
+                    title: 'Module 2: Risk Assessment',
+                    lessons: ['Risk Categories', 'Underwriting Basics', 'Claims Processing']
+                }
+            ]
+        },
+        'risk-management': {
+            title: 'Advanced Risk Management',
+            features: [
+                { icon: 'fa-clock', text: '10 weeks course' },
+                { icon: 'fa-video', text: '22 video lessons' },
+                { icon: 'fa-certificate', text: 'Professional certification' }
+            ],
+            curriculum: [
+                {
+                    title: 'Module 1: Risk Analysis',
+                    lessons: ['Risk Identification', 'Risk Assessment Methods', 'Risk Mitigation']
+                },
+                {
+                    title: 'Module 2: Enterprise Risk',
+                    lessons: ['Corporate Risk Strategy', 'Risk Monitoring', 'Compliance']
+                }
+            ]
+        },
+        'investment-strategies': {
+            title: 'Investment Strategies Mastery',
+            features: [
+                { icon: 'fa-clock', text: '14 weeks course' },
+                { icon: 'fa-video', text: '28 video lessons' },
+                { icon: 'fa-certificate', text: 'Advanced certification' }
+            ],
+            curriculum: [
+                {
+                    title: 'Module 1: Investment Foundations',
+                    lessons: ['Market Analysis', 'Portfolio Theory', 'Asset Allocation']
+                },
+                {
+                    title: 'Module 2: Advanced Strategies',
+                    lessons: ['Options Trading', 'Fixed Income', 'Alternative Investments']
+                }
+            ]
+        }
     };
 
     // Open modal with course details

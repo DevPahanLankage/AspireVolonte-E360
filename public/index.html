@@ -39,12 +39,12 @@
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li class="dropdown">
-              <a href="/courses.html" class="nav-link">Courses <i class="fas fa-chevron-down"></i></a>
+              <a href="courses.html" class="nav-link">Courses <i class="fas fa-chevron-down"></i></a>
               <ul class="dropdown-menu">
-                <li><a href="/courses.html#financial">Financial Planning</a></li>
-                <li><a href="/courses.html#insurance">Insurance Fundamentals</a></li>
-                <li><a href="/courses.html#risk">Risk Management</a></li>
-                <li><a href="/courses.html#investment">Investment Strategies</a></li>
+                <li><a href="courses.html#financial">Financial Planning</a></li>
+                <li><a href="courses.html#insurance">Insurance Fundamentals</a></li>
+                <li><a href="courses.html#risk">Risk Management</a></li>
+                <li><a href="courses.html#investment">Investment Strategies</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -107,16 +107,16 @@
           </div>
           <div class="trust-badges">
             <div class="badge">
-              <i class="fas fa-shield-alt"></i>
-              <span>100% Secure</span>
+              <i class="fas fa-shield-check"></i>
+              <span>Trusted & Secure</span>
             </div>
             <div class="badge">
-              <i class="fas fa-check-circle"></i>
-              <span>Licensed</span>
+              <i class="fas fa-certificate"></i>
+              <span>Licensed Expert</span>
             </div>
             <div class="badge">
-              <i class="fas fa-star"></i>
-              <span>Top Rated</span>
+              <i class="fas fa-award"></i>
+              <span>5-Star Service</span>
             </div>
           </div>
         </div>
@@ -128,62 +128,60 @@
 
       <section id="about" class="about-section">
         <div class="container">
-          <h2>About Aspire Volonte</h2>
-          <div class="about-text">
-            <p>
-              At Aspire Volonte, we understand that your financial security is
-              paramount. With years of experience in the insurance industry, we
-              provide expert guidance to protect what matters most to you.
+          <div class="section-header">
+            <h2>About Aspire Volonte</h2>
+            <p class="section-subtitle">
+              At Aspire Volonte, we understand that your financial security is paramount. With years of experience in the insurance industry, we provide expert guidance to protect what matters most to you.
             </p>
           </div>
-        </div>
-        <div class="about-features">
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-shield-alt"></i>
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="feature-content">
+                <h3>Personalized Insurance Solutions</h3>
+                <p>
+                  Tailored insurance plans designed to meet your specific needs
+                  and requirements.
+                </p>
+              </div>
             </div>
-            <div class="feature-content">
-              <h3>Personalized Insurance Solutions</h3>
-              <p>
-                Tailored insurance plans designed to meet your specific needs
-                and requirements.
-              </p>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="feature-content">
+                <h3>Expert Financial Advice</h3>
+                <p>
+                  Professional guidance to help you make informed decisions about
+                  your financial future.
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-chart-line"></i>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="feature-content">
+                <h3>Sustainable Practices</h3>
+                <p>
+                  Committed to environmental responsibility through our tree
+                  planting initiative.
+                </p>
+              </div>
             </div>
-            <div class="feature-content">
-              <h3>Expert Financial Advice</h3>
-              <p>
-                Professional guidance to help you make informed decisions about
-                your financial future.
-              </p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Sustainable Practices</h3>
-              <p>
-                Committed to environmental responsibility through our tree
-                planting initiative.
-              </p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-headset"></i>
-            </div>
-            <div class="feature-content">
-              <h3>24/7 Customer Support</h3>
-              <p>
-                Round-the-clock assistance to address your concerns and queries
-                anytime.
-              </p>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <div class="feature-content">
+                <h3>24/7 Customer Support</h3>
+                <p>
+                  Round-the-clock assistance to address your concerns and queries
+                  anytime.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -191,7 +189,10 @@
 
       <section id="policies" class="policies-section">
         <div class="container">
-          <h2>Our Insurance Policies</h2>
+          <div class="section-header">
+            <h2>Our Insurance Policies</h2>
+            <p class="section-subtitle">Comprehensive coverage solutions tailored to protect what matters most to you</p>
+          </div>
           <div class="policies-grid">
             <div class="policy-card" onclick="openPolicyModal('health')">
               <div class="policy-icon">
@@ -326,6 +327,10 @@
 
       <section id="plant-tree" class="policy-tree-section">
         <div class="container">
+          <div class="section-header">
+            <h2>Growing Together</h2>
+            <p class="section-subtitle">Join our initiative to create a sustainable future while securing yours</p>
+          </div>
           <div class="impact-counter" data-aos="fade-up">
             <div class="trees-count" id="policy-trees-count">1,234</div>
             <p class="impact-label">Trees Planted Through Policy Purchases</p>
@@ -412,9 +417,10 @@
       <!-- FAQ Section -->
       <section id="faq" class="faq-section">
         <div class="container">
-          <h2>Frequently Asked Questions</h2>
-          <p class="section-subtitle">Find answers to common insurance and investment questions</p>
-          
+          <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common insurance and investment questions</p>
+          </div>
           <div class="faq-grid">
             <div class="faq-item" data-aos="fade-up">
               <div class="faq-question">
@@ -462,9 +468,10 @@
       <!-- Investment Accounts Section -->
       <section id="investment-accounts" class="investment-section">
         <div class="container">
-          <h2>Understanding Investment Accounts</h2>
-          <p class="section-subtitle">Make informed decisions about your financial future</p>
-
+          <div class="section-header">
+            <h2>Understanding Investment Accounts</h2>
+            <p class="section-subtitle">Make informed decisions about your financial future with our expert guidance</p>
+          </div>
           <div class="investment-grid">
             <div class="investment-card tfsa" data-aos="fade-right">
               <div class="investment-header">
@@ -517,64 +524,55 @@
         </div>
       </section>
 
-      <!-- Blog Section -->
-      <section id="blog" class="blog-section">
+      <!-- Knowledge Hub Section -->
+      <section id="knowledge-hub" class="knowledge-hub-section">
         <div class="container">
-          <h2>Financial Insights Blog</h2>
-          <p class="section-subtitle">Stay informed with our latest articles and tips</p>
-
-          <div class="blog-grid">
-            <article class="blog-card" data-aos="fade-up">
-              <div class="blog-image">
-                <img src="images/blog-1.jpg" alt="Investment Strategies" />
-                <div class="blog-category">Investing</div>
-              </div>
-              <div class="blog-content">
-                <h3>Essential Investment Strategies for Beginners</h3>
-                <p>Learn the fundamental principles of investing and how to build a strong investment portfolio...</p>
-                <div class="blog-meta">
-                  <span><i class="far fa-calendar"></i> March 15, 2024</span>
-                  <span><i class="far fa-clock"></i> 5 min read</span>
-                </div>
-                <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </article>
-
-            <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-              <div class="blog-image">
-                <img src="images/blog-2.jpg" alt="Insurance Tips" />
-                <div class="blog-category">Insurance</div>
-              </div>
-              <div class="blog-content">
-                <h3>How to Choose the Right Insurance Coverage</h3>
-                <p>Understanding different insurance options and selecting the best coverage for your needs...</p>
-                <div class="blog-meta">
-                  <span><i class="far fa-calendar"></i> March 12, 2024</span>
-                  <span><i class="far fa-clock"></i> 4 min read</span>
-                </div>
-                <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </article>
-
-            <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-              <div class="blog-image">
-                <img src="images/blog-3.jpg" alt="Retirement Planning" />
-                <div class="blog-category">Retirement</div>
-              </div>
-              <div class="blog-content">
-                <h3>Planning for a Comfortable Retirement</h3>
-                <p>Key strategies and tips for building a secure retirement fund that meets your lifestyle goals...</p>
-                <div class="blog-meta">
-                  <span><i class="far fa-calendar"></i> March 10, 2024</span>
-                  <span><i class="far fa-clock"></i> 6 min read</span>
-                </div>
-                <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-              </div>
-            </article>
+          <div class="section-header">
+            <h2>Knowledge Hub</h2>
+            <p class="section-subtitle">Enhance your financial literacy with expert-led courses and insightful articles</p>
           </div>
 
-          <div class="blog-cta">
-            <a href="#" class="view-all-btn">View All Articles <i class="fas fa-arrow-right"></i></a>
+          <div class="knowledge-grid">
+            <!-- Featured Course Cards -->
+            <div class="course-card" data-aos="fade-up">
+              <div class="course-image">
+                <img src="images/risk-management.jpg" alt="Risk Management" />
+                <div class="course-level">Intermediate</div>
+              </div>
+              <div class="course-content">
+                <h3>Risk Management Fundamentals</h3>
+                <p class="course-description">Master the principles of risk assessment and mitigation strategies in financial planning.</p>
+                <div class="course-meta">
+                  <div class="course-stats">
+                    <span class="stat"><i class="far fa-clock"></i> 6 weeks</span>
+                    <span class="stat"><i class="fas fa-user-graduate"></i> 1.2k students</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="course-image">
+                <img src="images/investment-basics.jpg" alt="Investment Basics" />
+                <div class="course-level">Beginner</div>
+              </div>
+              <div class="course-content">
+                <h3>Investment Strategies for Beginners</h3>
+                <p class="course-description">Learn fundamental investment principles and build a strong foundation for your financial future.</p>
+                <div class="course-meta">
+                  <div class="course-stats">
+                    <span class="stat"><i class="far fa-clock"></i> 4 weeks</span>
+                    <span class="stat"><i class="fas fa-user-graduate"></i> 2.5k students</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="knowledge-hub-cta">
+            <a href="courses.html" class="cta-button primary-btn">
+              Explore All Courses <i class="fas fa-graduation-cap"></i>
+            </a>
           </div>
         </div>
       </section>
@@ -582,10 +580,8 @@
       <section id="contact" class="contact-section">
         <div class="container">
           <div class="section-header">
-            <h2>Get Expert Insurance Advice</h2>
-            <p class="section-subtitle">
-              Schedule a consultation with our insurance specialists
-            </p>
+            <h2 class="gradient-text">Get Expert Insurance Advice</h2>
+            <p class="section-subtitle">Schedule a consultation with our insurance specialists</p>
           </div>
           <div class="contact-grid">
             <div class="contact-info">
@@ -717,27 +713,32 @@
       </section>
 
       <section class="newsletter-section">
-        <div class="newsletter-content">
-          <h2>Stay Updated with Insurance Tips</h2>
-          <p>
-            Get weekly insights on insurance, financial planning, and exclusive
-            offers.
-          </p>
-          <form class="newsletter-form" id="newsletterForm">
-            <div class="form-group">
-              <input type="email" placeholder="Enter your email" required />
-              <button type="submit">
-                Subscribe
-                <i class="fas fa-arrow-right"></i>
-              </button>
-            </div>
-            <div class="form-checkbox">
-              <input type="checkbox" id="consent" required />
-              <label for="consent"
-                >I agree to receive insurance updates and offers</label
-              >
-            </div>
-          </form>
+        <div class="container">
+          <div class="section-header">
+            <h2 style="color: white;">Stay Updated with Insurance Tips</h2>
+            <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">Get weekly insights on insurance, financial planning, and exclusive offers</p>
+          </div>
+          <div class="newsletter-content">
+            <p>
+              Get weekly insights on insurance, financial planning, and exclusive
+              offers.
+            </p>
+            <form class="newsletter-form" id="newsletterForm">
+              <div class="form-group">
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit">
+                  Subscribe
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+              <div class="form-checkbox">
+                <input type="checkbox" id="consent" required />
+                <label for="consent"
+                  >I agree to receive insurance updates and offers</label
+                >
+              </div>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -823,46 +824,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Education Preview Section -->
-      <section class="education-preview-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="gradient-text">Enhance Your Financial Knowledge</h2>
-            <p class="section-subtitle">Expert-led courses designed to help you master finance and insurance</p>
-          </div>
-          
-          <div class="preview-grid">
-            <div class="preview-content">
-              <h3>Why Choose Our Courses?</h3>
-              <ul class="benefit-list">
-                <li>
-                  <i class="fas fa-check-circle"></i>
-                  <span>Learn from industry experts with real-world experience</span>
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i>
-                  <span>Flexible learning schedule - study at your own pace</span>
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i>
-                  <span>Practical knowledge you can apply immediately</span>
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i>
-                  <span>Industry-recognized certifications</span>
-                </li>
-              </ul>
-              <a href="/courses.html" class="cta-button primary-btn">
-                Explore Courses <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-            <div class="preview-image">
-              <img src="assets/education-preview.jpg" alt="Online Learning">
-            </div>
-          </div>
-        </div>
-      </section>
 
     </main>
 
