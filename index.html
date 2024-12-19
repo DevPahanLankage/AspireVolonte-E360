@@ -43,6 +43,234 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+    <style>
+        /* Hero Section Enhancements */
+        .courses-hero, .hero-section {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            overflow: hidden;
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .shape1 { top: 20%; left: 10%; width: 100px; height: 100px; background: var(--accent-color); transform: rotate(45deg); }
+        .shape2 { top: 40%; right: 15%; width: 150px; height: 150px; background: var(--primary-color); border-radius: 50%; }
+        .shape3 { bottom: 20%; left: 20%; width: 80px; height: 80px; background: var(--secondary-color); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 150px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-family: "Playfair Display", serif;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        .hero-title span {
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-subtitle {
+            font-family: "Montserrat", sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 0.5s;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 1s;
+        }
+
+        .primary-btn, .secondary-btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .primary-btn {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: var(--primary-color);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .secondary-btn:hover {
+            background: #fff;
+            color: var(--primary-color);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 1.5s;
+            z-index: 2;
+        }
+
+        .mouse {
+            width: 30px;
+            height: 50px;
+            border: 2px solid #fff;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .mouse::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: #fff;
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translate(-50%, 0); opacity: 1; }
+            100% { transform: translate(-50%, 20px); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards 1.5s;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .badge i {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+        }
+
+        .badge span {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+    </style>
   </head>
   <body>
     <!-- Skip to main content link for accessibility -->
@@ -93,37 +321,26 @@
 
     <main id="main-content" role="main">
       <section id="hero" class="hero-section">
-        <div class="hero-background">
-          <div class="overlay"></div>
-          <div class="animated-bg">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-          </div>
-          <div class="shapes">
-            <div class="shape shape1"></div>
-            <div class="shape shape2"></div>
-            <div class="shape shape3"></div>
-          </div>
+        <div class="hero-particles">
+            <!-- Particles will be added by JavaScript -->
         </div>
-        <div class="hero-content" data-aos="fade-up">
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+        <div class="hero-content">
           <h1 class="hero-title">
             Secure Your Future with
-            <span class="gradient-text">Aspire Volonte</span>
+            <span>Aspire Volonte</span>
           </h1>
           <p class="hero-subtitle">
             Expert financial advice and insurance solutions tailored to your
             needs
           </p>
           <div class="hero-cta">
-            <a href="#contact" class="cta-button primary-btn shine-effect"
-              >Get Started</a
-            >
-            <a href="#about" class="cta-button secondary-btn"
-              >Learn More <i class="fas fa-arrow-right"></i
-            ></a>
+            <a href="#contact" class="primary-btn shine-effect">Get Started</a>
+            <a href="#about" class="secondary-btn">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
           <div class="trust-badges">
             <div class="badge">
@@ -141,8 +358,8 @@
           </div>
         </div>
         <div class="scroll-indicator">
-          <div class="mouse"></div>
-          <span>Scroll to explore</span>
+            <div class="mouse"></div>
+            <span>Scroll to explore</span>
         </div>
       </section>
 
@@ -1072,5 +1289,34 @@
 
     <!-- Load main.js after all other scripts -->
     <script src="scripts/main.js"></script>
+    <script>
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.hero-particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.animationDuration = `${5 + Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles on load
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            // Initialize existing animations
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+            });
+        });
+    </script>
   </body>
 </html>
