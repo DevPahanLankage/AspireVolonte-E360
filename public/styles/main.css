@@ -480,9 +480,8 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
-/* Modal Styles */
+/* Modal Base Styles */
 .modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -490,30 +489,76 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
   padding: 2rem;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal-content {
   background: white;
   border-radius: 20px;
+  width: 90%;
   max-width: 800px;
-  margin: 2rem auto;
-  position: relative;
   max-height: 85vh;
   overflow-y: auto;
-  animation: modalSlideIn 0.3s ease;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
+.modal.active .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Modal Header */
 .modal-header {
-  padding: 2rem;
-  color: white;
+  padding: 2.5rem 3rem;
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  flex-shrink: 0;
+  border-radius: 20px 20px 0 0;
+}
+
+/* Theme-specific header backgrounds */
+.modal-content[data-policy="health"] .modal-header {
+  background: linear-gradient(135deg, #2196F3, #64B5F6);
+}
+
+.modal-content[data-policy="life"] .modal-header {
+  background: linear-gradient(135deg, #5C6BC0, #7986CB);
+}
+
+.modal-content[data-policy="critical"] .modal-header {
+  background: linear-gradient(135deg, #E91E63, #EC407A);
+}
+
+.modal-content[data-policy="disability"] .modal-header {
+  background: linear-gradient(135deg, #009688, #26A69A);
+}
+
+.modal-content[data-policy="accident"] .modal-header {
+  background: linear-gradient(135deg, #FF9800, #FFA726);
+}
+
+.modal-content[data-policy="cancer"] .modal-header {
+  background: linear-gradient(135deg, #E91E63, #EC407A);
+}
+
+.modal-content[data-policy="hospital"] .modal-header {
   background: linear-gradient(135deg, #2196F3, #64B5F6);
 }
 
@@ -532,78 +577,230 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-.modal-header h2 {
-  margin: 0;
-  font-size: 2rem;
-}
-
-.modal-body {
-  padding: 2rem;
-  flex-grow: 1;
-}
-
-.coverage-list {
-  border-radius: 15px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  background: #E3F2FD;
-}
-
-.coverage-list ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.coverage-list li {
-  background: white;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
+.modal-close i {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+#modalTitle {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.modal-description {
+  padding: 2rem 3rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+/* Coverage Section */
+.coverage-section {
+  padding: 2rem 3rem;
+  background: #F8FAFC;
+}
+
+.coverage-title {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.coverage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.coverage-item {
+  background: white;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  border: 1px solid #E0E0E0;
+}
+
+/* Theme-specific coverage item styles */
+.modal-content[data-policy="health"] .coverage-item i { color: #2196F3; }
+.modal-content[data-policy="life"] .coverage-item i { color: #5C6BC0; }
+.modal-content[data-policy="critical"] .coverage-item i { color: #E91E63; }
+.modal-content[data-policy="disability"] .coverage-item i { color: #009688; }
+.modal-content[data-policy="accident"] .coverage-item i { color: #FF9800; }
+.modal-content[data-policy="cancer"] .coverage-item i { color: #E91E63; }
+.modal-content[data-policy="hospital"] .coverage-item i { color: #2196F3; }
+
+.coverage-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: 2rem 3rem;
+}
+
 .benefits-grid {
-  padding-right: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-.modal-footer {
+.benefit-item {
+  background: white;
   padding: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: center;
-  flex-shrink: 0;
+  border-radius: 15px;
+  border: 1px solid #E0E0E0;
+  transition: all 0.3s ease;
 }
 
-/* Single scrollbar styling */
-.modal-content::-webkit-scrollbar {
-  width: 8px;
+.benefit-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.modal-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
+.benefit-title {
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
-.modal-content::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+/* Theme-specific benefit title colors */
+.modal-content[data-policy="health"] .benefit-title { color: #2196F3; }
+.modal-content[data-policy="life"] .benefit-title { color: #5C6BC0; }
+.modal-content[data-policy="critical"] .benefit-title { color: #E91E63; }
+.modal-content[data-policy="disability"] .benefit-title { color: #009688; }
+.modal-content[data-policy="accident"] .benefit-title { color: #FF9800; }
+.modal-content[data-policy="cancer"] .benefit-title { color: #E91E63; }
+.modal-content[data-policy="hospital"] .benefit-title { color: #2196F3; }
+
+.benefit-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
+/* Modal Footer */
+.modal-footer {
+  padding: 2rem 3rem;
+  border-top: 1px solid #E0E0E0;
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+.get-quote-btn {
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+}
+
+/* Theme-specific button styles */
+.modal-content[data-policy="health"] .get-quote-btn { background: #2196F3; }
+.modal-content[data-policy="life"] .get-quote-btn { background: #5C6BC0; }
+.modal-content[data-policy="critical"] .get-quote-btn { background: #E91E63; }
+.modal-content[data-policy="disability"] .get-quote-btn { background: #009688; }
+.modal-content[data-policy="accident"] .get-quote-btn { background: #FF9800; }
+.modal-content[data-policy="cancer"] .get-quote-btn { background: #E91E63; }
+.modal-content[data-policy="hospital"] .get-quote-btn { background: #2196F3; }
+
+.get-quote-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal {
+    padding: 1rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .modal-content {
+    width: 95%;
+  }
+
+  .modal-header {
+    padding: 2rem;
+  }
+
+  .modal-description,
+  .coverage-section,
+  .benefits-section,
+  .modal-footer {
+    padding: 1.5rem 2rem;
+  }
+
+  .modal-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  #modalTitle {
+    font-size: 1.75rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-header {
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .modal-description,
+  .coverage-section,
+  .benefits-section,
+  .modal-footer {
+    padding: 1.25rem;
+  }
+
+  #modalTitle {
+    font-size: 1.5rem;
+  }
+
+  .get-quote-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -644,6 +841,8 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   overflow: hidden;
   border: 1px solid transparent;
+  border-top: 4px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .policy-card:hover {
@@ -699,7 +898,73 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(5px);
 }
 
-/* Health Insurance Theme */
+/* Policy Card Themes */
+/* Accident Insurance Theme - Orange */
+.policy-card[onclick*="accident"] .policy-icon {
+  background: linear-gradient(135deg, #FF9800, #FFA726);
+}
+
+.policy-card[onclick*="accident"]:hover {
+  border-color: #FF9800;
+}
+
+.policy-card[onclick*="accident"] .learn-more-btn {
+  color: #FF9800;
+}
+
+/* Critical Illness Theme - Pink/Magenta */
+.policy-card[onclick*="critical"] .policy-icon {
+  background: linear-gradient(135deg, #E91E63, #EC407A);
+}
+
+.policy-card[onclick*="critical"]:hover {
+  border-color: #E91E63;
+}
+
+.policy-card[onclick*="critical"] .learn-more-btn {
+  color: #E91E63;
+}
+
+/* Cancer Insurance Theme - Pink/Magenta */
+.policy-card[onclick*="cancer"] .policy-icon {
+  background: linear-gradient(135deg, #E91E63, #EC407A);
+}
+
+.policy-card[onclick*="cancer"]:hover {
+  border-color: #E91E63;
+}
+
+.policy-card[onclick*="cancer"] .learn-more-btn {
+  color: #E91E63;
+}
+
+/* Disability Insurance Theme - Teal */
+.policy-card[onclick*="disability"] .policy-icon {
+  background: linear-gradient(135deg, #009688, #26A69A);
+}
+
+.policy-card[onclick*="disability"]:hover {
+  border-color: #009688;
+}
+
+.policy-card[onclick*="disability"] .learn-more-btn {
+  color: #009688;
+}
+
+/* Life Insurance Theme - Purple/Blue */
+.policy-card[onclick*="life"] .policy-icon {
+  background: linear-gradient(135deg, #5C6BC0, #7986CB);
+}
+
+.policy-card[onclick*="life"]:hover {
+  border-color: #5C6BC0;
+}
+
+.policy-card[onclick*="life"] .learn-more-btn {
+  color: #5C6BC0;
+}
+
+/* Health Insurance Theme - Blue */
 .policy-card[onclick*="health"] .policy-icon {
   background: linear-gradient(135deg, #2196F3, #64B5F6);
 }
@@ -712,30 +977,46 @@ h1, h2, h3, h4, h5, h6 {
   color: #2196F3;
 }
 
-/* Life Insurance Theme */
-.policy-card[onclick*="life"] .policy-icon {
-  background: linear-gradient(135deg, #4CAF50, #81C784);
+/* Hospital Insurance Theme - Blue */
+.policy-card[onclick*="hospital"] .policy-icon {
+  background: linear-gradient(135deg, #2196F3, #64B5F6);
 }
 
-.policy-card[onclick*="life"]:hover {
-  border-color: #4CAF50;
+.policy-card[onclick*="hospital"]:hover {
+  border-color: #2196F3;
 }
 
-.policy-card[onclick*="life"] .learn-more-btn {
-  color: #4CAF50;
+.policy-card[onclick*="hospital"] .learn-more-btn {
+  color: #2196F3;
 }
 
-/* Critical Illness Theme */
-.policy-card[onclick*="critical"] .policy-icon {
-  background: linear-gradient(135deg, #9C27B0, #BA68C8);
+/* Add a top border to each policy card with its theme color */
+.policy-card[onclick*="accident"] {
+  border-top-color: #FF9800;
 }
 
-.policy-card[onclick*="critical"]:hover {
-  border-color: #9C27B0;
+.policy-card[onclick*="critical"] {
+  border-top-color: #E91E63;
 }
 
-.policy-card[onclick*="critical"] .learn-more-btn {
-  color: #9C27B0;
+.policy-card[onclick*="cancer"] {
+  border-top-color: #E91E63;
+}
+
+.policy-card[onclick*="disability"] {
+  border-top-color: #009688;
+}
+
+.policy-card[onclick*="life"] {
+  border-top-color: #5C6BC0;
+}
+
+.policy-card[onclick*="health"] {
+  border-top-color: #2196F3;
+}
+
+.policy-card[onclick*="hospital"] {
+  border-top-color: #2196F3;
 }
 
 /* Responsive Design */
@@ -827,7 +1108,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-subtitle {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
   }
 
   .hero-content {
@@ -838,7 +1119,7 @@ h1, h2, h3, h4, h5, h6 {
   .primary-btn,
   .secondary-btn {
     width: 100%;
-    text-align: center;
+  text-align: center;
     justify-content: center;
   }
 
@@ -1093,8 +1374,8 @@ h1, h2, h3, h4, h5, h6 {
   .footer-legal {
     flex-direction: column;
     gap: 1rem;
-    align-items: center;
-  }
+  align-items: center;
+}
 }
 
 
@@ -1316,21 +1597,24 @@ h1, h2, h3, h4, h5, h6 {
 
 /* FAQ Section */
 .faq-section {
-  padding: 6rem 0;
+  padding: var(--section-spacing) 0;
   background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
 }
 
 .faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   max-width: 800px;
-  margin: 3rem auto 0;
+  margin: 0 auto;
 }
 
 .faq-item {
   background: white;
   border-radius: 15px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .faq-question {
@@ -1339,45 +1623,53 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  background: white;
+  border: none;
+  width: 100%;
+  text-align: left;
 }
 
 .faq-question h3 {
   font-size: 1.1rem;
-  margin: 0;
   color: var(--text-primary);
+  margin: 0;
+  padding-right: 2rem;
 }
 
 .toggle-btn {
   background: none;
   border: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
   color: var(--primary-color);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 0;
+  font-size: 1.1rem;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background: #f8fafc;
+}
+
+.faq-answer p {
+  padding: 1.5rem;
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .faq-item.active .toggle-btn {
   transform: rotate(45deg);
-  background: var(--primary-color);
-  color: white;
-}
-
-.faq-answer {
-  padding: 0 1.5rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
 }
 
 .faq-item.active .faq-answer {
-  padding: 0 1.5rem 1.5rem;
-  max-height: 500px;
+  max-height: 300px;
+  transition: max-height 0.5s ease-in;
 }
 
 /* Investment Accounts Section */
@@ -1608,75 +1900,126 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Lead Magnet Modal */
-.lead-magnet-modal .modal-content {
-  max-width: 800px;
-  padding: 0;
+.lead-magnet-modal {
+  background: white;
+  border-radius: 20px;
   overflow: hidden;
-  display: flex;
-}
-
-.lead-magnet-content {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 0;
+  max-width: 900px;
+  width: 90%;
+  margin: 2rem auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .lead-magnet-image {
-  height: 100%;
-  overflow: hidden;
-}
-
-.lead-magnet-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
 }
 
-.lead-magnet-text {
-  padding: 2.5rem;
-  background: white;
+.lead-magnet-content {
+  padding: 3rem;
 }
 
-.lead-magnet-text h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.lead-magnet-text p {
-  color: var(--text-secondary);
+.lead-magnet-title {
+  color: var(--secondary-color);
+  font-size: 2.25rem;
+  font-weight: 700;
   margin-bottom: 1.5rem;
+  font-family: "Playfair Display", serif;
 }
 
-.lead-magnet-text ul {
+.lead-magnet-description {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.lead-magnet-features {
+  margin: 2rem 0;
+}
+
+.feature-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem;
+  margin: 0;
 }
 
-.lead-magnet-text li {
+.feature-list li {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  font-size: 1.1rem;
 }
 
-.lead-magnet-text li i {
+.feature-list li i {
   color: #4CAF50;
+  font-size: 1.25rem;
+}
+
+.lead-magnet-form {
+  margin-top: 2rem;
+}
+
+.lead-magnet-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #E0E0E0;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.lead-magnet-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 80, 158, 0.1);
 }
 
 @media (max-width: 768px) {
-  .quote-calculator {
-    display: none;
-  }
-
-  .lead-magnet-content {
+  .lead-magnet-modal {
     grid-template-columns: 1fr;
   }
 
   .lead-magnet-image {
-    display: none;
+    height: 200px;
+  }
+
+  .lead-magnet-content {
+    padding: 2rem;
+  }
+
+  .lead-magnet-title {
+    font-size: 1.75rem;
+  }
+
+  .lead-magnet-description {
+    font-size: 1rem;
+  }
+
+  .feature-list li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lead-magnet-modal {
+    width: 95%;
+    margin: 1rem auto;
+  }
+
+  .lead-magnet-content {
+    padding: 1.5rem;
+  }
+
+  .lead-magnet-title {
+    font-size: 1.5rem;
   }
 }
 
@@ -2725,6 +3068,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: auto;
 }
 
 .course-stats {
@@ -2748,6 +3092,25 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: var(--primary-color);
   font-size: 1.2rem;
+}
+
+.course-meta .cta-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.course-meta .primary-btn {
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.course-meta .primary-btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .view-courses-btn {
@@ -3000,6 +3363,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: auto;
 }
 
 .courses-section .course-price {
@@ -3403,7 +3767,7 @@ h1, h2, h3, h4, h5, h6 {
 .info-header p,
 .form-header p {
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: white;
   line-height: 1.6;
   opacity: 0.9;
 }
@@ -3437,5 +3801,166 @@ h1, h2, h3, h4, h5, h6 {
   
   .section-subtitle {
     font-size: 1rem;
+  }
+}
+
+.nav-links .cta-button {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.nav-links .cta-button:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .nav-links .cta-button {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.quote-calculator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.quote-calculator.minimized {
+  height: 60px;
+}
+
+.calculator-header {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.calculator-header h3 {
+  font-size: 1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.minimize-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.minimized .minimize-btn {
+  transform: rotate(180deg);
+}
+
+.calculator-body {
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.minimized .calculator-body {
+  max-height: 0;
+  padding: 0 1.5rem;
+}
+
+.quote-calculator .form-group {
+  margin-bottom: 1rem;
+}
+
+.quote-calculator label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.quote-calculator select,
+.quote-calculator input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.quote-calculator select:focus,
+.quote-calculator input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 80, 158, 0.1);
+}
+
+.range-slider {
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.range-slider input[type="range"] {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.range-slider output {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.quote-submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.quote-submit-btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .quote-calculator {
+    width: calc(100% - 40px);
   }
 }

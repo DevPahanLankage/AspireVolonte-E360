@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aspire Volonte - Your Financial Advisor</title>
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -305,18 +305,27 @@
       <!-- Policy Modal -->
       <div id="policyModal" class="modal">
         <div class="modal-content">
-          <span class="close-modal">&times;</span>
           <div class="modal-header">
             <div class="modal-icon">
               <i class="fas fa-shield-alt"></i>
             </div>
-            <h2 id="modalTitle"></h2>
+            <h2 id="modalTitle">Insurance Policy</h2>
+            <button class="modal-close" onclick="closeModal()">
+              <i class="fas fa-times"></i>
+            </button>
           </div>
-          <div class="modal-body">
-            <div id="modalDescription"></div>
-            <div class="coverage-list" id="coverageList"></div>
-            <div class="benefits-grid" id="benefitsGrid"></div>
+          <p id="modalDescription" class="modal-description"></p>
+          
+          <div class="coverage-section">
+            <h3 class="coverage-title">Coverage Includes:</h3>
+            <div class="coverage-list"></div>
           </div>
+
+          <div class="benefits-section">
+            <h3 class="coverage-title">Key Benefits:</h3>
+            <div class="benefits-grid"></div>
+          </div>
+
           <div class="modal-footer">
             <button class="get-quote-btn" onclick="showLeadForm()">
               Get a Quote <i class="fas fa-arrow-right"></i>
@@ -401,7 +410,7 @@
 
             <div class="tree-illustration" data-aos="fade-left">
               <img
-                src="images/tree-planting.svg"
+                src="./assets/tree-planting-initiative.jpg"
                 alt="Tree Planting Initiative"
                 class="tree-image"
               />
@@ -422,41 +431,41 @@
             <p class="section-subtitle">Find answers to common insurance and investment questions</p>
           </div>
           <div class="faq-grid">
-            <div class="faq-item" data-aos="fade-up">
-              <div class="faq-question">
+            <div class="faq-item">
+              <button class="faq-question">
                 <h3>What types of insurance do I need?</h3>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
-              </div>
+                <span class="toggle-btn"><i class="fas fa-plus"></i></span>
+              </button>
               <div class="faq-answer">
                 <p>The insurance you need depends on your life stage and circumstances. Generally, we recommend having health insurance as a foundation, life insurance if you have dependents, and critical illness/disability insurance to protect your income.</p>
               </div>
             </div>
 
-            <div class="faq-item" data-aos="fade-up">
-              <div class="faq-question">
+            <div class="faq-item">
+              <button class="faq-question">
                 <h3>How much life insurance coverage should I get?</h3>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
-              </div>
+                <span class="toggle-btn"><i class="fas fa-plus"></i></span>
+              </button>
               <div class="faq-answer">
                 <p>A general rule is 10-15 times your annual income, but this varies based on your debts, dependents, and future financial obligations. Our advisors can help you calculate the right amount for your situation.</p>
               </div>
             </div>
 
-            <div class="faq-item" data-aos="fade-up">
-              <div class="faq-question">
+            <div class="faq-item">
+              <button class="faq-question">
                 <h3>What's the difference between term and whole life insurance?</h3>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
-              </div>
+                <span class="toggle-btn"><i class="fas fa-plus"></i></span>
+              </button>
               <div class="faq-answer">
                 <p>Term life insurance provides coverage for a specific period (e.g., 20 years) with lower premiums. Whole life insurance provides lifetime coverage and builds cash value but has higher premiums.</p>
               </div>
             </div>
 
-            <div class="faq-item" data-aos="fade-up">
-              <div class="faq-question">
+            <div class="faq-item">
+              <button class="faq-question">
                 <h3>Can I have multiple insurance policies?</h3>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
-              </div>
+                <span class="toggle-btn"><i class="fas fa-plus"></i></span>
+              </button>
               <div class="faq-answer">
                 <p>Yes, you can have multiple insurance policies. In fact, it's often recommended to have different types of coverage to create a comprehensive protection plan.</p>
               </div>
@@ -536,7 +545,7 @@
             <!-- Featured Course Cards -->
             <div class="course-card" data-aos="fade-up">
               <div class="course-image">
-                <img src="images/risk-management.jpg" alt="Risk Management" />
+                <img src="./assets/risk-management.jpg" alt="Risk Management" />
                 <div class="course-level">Intermediate</div>
               </div>
               <div class="course-content">
@@ -547,13 +556,14 @@
                     <span class="stat"><i class="far fa-clock"></i> 6 weeks</span>
                     <span class="stat"><i class="fas fa-user-graduate"></i> 1.2k students</span>
                   </div>
+                  <a href="courses.html#risk" class="cta-button primary-btn">Enroll Now</a>
                 </div>
               </div>
             </div>
 
             <div class="course-card" data-aos="fade-up" data-aos-delay="100">
               <div class="course-image">
-                <img src="images/investment-basics.jpg" alt="Investment Basics" />
+                <img src="./assets/investment-strategies.jpg" alt="Investment Strategies" />
                 <div class="course-level">Beginner</div>
               </div>
               <div class="course-content">
@@ -564,6 +574,7 @@
                     <span class="stat"><i class="far fa-clock"></i> 4 weeks</span>
                     <span class="stat"><i class="fas fa-user-graduate"></i> 2.5k students</span>
                   </div>
+                  <a href="courses.html#investment" class="cta-button primary-btn">Enroll Now</a>
                 </div>
               </div>
             </div>
@@ -580,7 +591,7 @@
       <section id="contact" class="contact-section">
         <div class="container">
           <div class="section-header">
-            <h2 class="gradient-text">Get Expert Insurance Advice</h2>
+            <h2>Get Expert Insurance Advice</h2>
             <p class="section-subtitle">Schedule a consultation with our insurance specialists</p>
           </div>
           <div class="contact-grid">
@@ -634,13 +645,6 @@
                   <div class="detail-content">
                     <h4>Email</h4>
                     <p>info@vitalcare.com</p>
-                  </div>
-                </div>
-                <div class="detail-item">
-                  <i class="fas fa-location-dot"></i>
-                  <div class="detail-content">
-                    <h4>Office</h4>
-                    <p>123 Insurance Street<br />Financial District</p>
                   </div>
                 </div>
                 <div class="detail-item">
@@ -752,10 +756,10 @@
 
       <!-- Floating Quote Calculator -->
       <div class="quote-calculator" id="quoteCalculator">
-        <div class="calculator-header">
+        <div class="calculator-header" onclick="toggleCalculator()">
           <h3><i class="fas fa-calculator"></i> Quick Quote Calculator</h3>
-          <button class="minimize-btn" onclick="toggleCalculator()">
-            <i class="fas fa-minus"></i>
+          <button class="minimize-btn">
+            <i class="fas fa-chevron-down"></i>
           </button>
         </div>
         <div class="calculator-body">
@@ -801,7 +805,7 @@
           <span class="close-modal" onclick="closeMagnetModal()">&times;</span>
           <div class="lead-magnet-content">
             <div class="lead-magnet-image">
-              <img src="images/insurance-guide.jpg" alt="Free Insurance Guide">
+              <img src="./assets/insurance-basics.jpg" alt="Free Insurance Guide">
             </div>
             <div class="lead-magnet-text">
               <h3>Free Insurance Planning Guide 2024</h3>
@@ -830,7 +834,7 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-info">
-          <a href="/" class="footer-logo">Aspire Volonte</a>
+          <a href="./index.html" class="footer-logo">Aspire Volonte</a>
           <p class="footer-description">
             Providing comprehensive insurance solutions to protect what matters
             most. Our commitment is to deliver peace of mind through reliable
@@ -894,6 +898,15 @@
             <li>
               <a href="#"><i class="fas fa-chevron-right"></i>Help Center</a>
             </li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="./index.html#about"><i class="fas fa-chevron-right"></i>About Us</a></li>
+            <li><a href="./index.html#contact"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+            <li><a href="./index.html#faq"><i class="fas fa-chevron-right"></i>FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -1000,52 +1013,52 @@
         health: {
           title: "Health Insurance",
           icon: "heartbeat",
-          description: "Comprehensive health coverage for you and your family, ensuring access to quality medical care when you need it most.",
+          description: "Comprehensive health coverage for medical expenses, hospital stays, and preventive care.",
           coveragePoints: [
-            "Hospitalization and surgery coverage",
-            "Outpatient care and specialist visits",
-            "Prescription drug coverage",
-            "Preventive care and wellness programs",
-            "Emergency medical services"
+            "Doctor visits and consultations",
+            "Hospital stays and surgeries",
+            "Prescription medications",
+            "Preventive care services",
+            "Emergency room visits"
           ],
           benefits: [
             {
-              title: "Wide Network Access",
-              description: "Access to a large network of healthcare providers and facilities"
+              title: "Comprehensive Coverage",
+              description: "Wide range of medical services covered"
             },
             {
-              title: "Flexible Plans",
-              description: "Choose from various coverage levels to suit your needs"
+              title: "Network Benefits",
+              description: "Access to quality healthcare providers"
             },
             {
-              title: "Wellness Programs",
-              description: "Access to preventive care and wellness initiatives"
+              title: "Preventive Care",
+              description: "No-cost preventive services"
             }
           ]
         },
         life: {
           title: "Life Insurance",
-          icon: "heart",
-          description: "Secure your family's financial future with our comprehensive life insurance plans that provide peace of mind and protection.",
+          icon: "shield-alt",
+          description: "Financial protection for your loved ones in case of unexpected events.",
           coveragePoints: [
             "Death benefit protection",
-            "Terminal illness benefit",
             "Cash value accumulation",
-            "Premium waiver option",
-            "Optional riders for enhanced coverage"
+            "Living benefits",
+            "Premium flexibility",
+            "Policy loans available"
           ],
           benefits: [
             {
-              title: "Flexible Coverage",
-              description: "Choose between term and permanent life insurance options"
+              title: "Financial Security",
+              description: "Protection for your family's future"
             },
             {
-              title: "Living Benefits",
-              description: "Access benefits for qualifying terminal illness cases"
+              title: "Cash Value Growth",
+              description: "Build wealth over time"
             },
             {
-              title: "Family Protection",
-              description: "Optional coverage for spouse and children"
+              title: "Tax Benefits",
+              description: "Tax-advantaged death benefit"
             }
           ]
         },
@@ -1104,7 +1117,7 @@
         accident: {
           title: "Accident Insurance",
           icon: "band-aid",
-          description: "Our Accident Insurance provides comprehensive coverage for unexpected injuries, giving you peace of mind and financial protection when accidents occur.",
+          description: "Coverage for unexpected injuries, giving you peace of mind and financial protection when accidents occur.",
           coveragePoints: [
             "24/7 coverage for accidental injuries",
             "Emergency room and hospital stays",
@@ -1115,11 +1128,11 @@
           benefits: [
             {
               title: "Immediate Coverage",
-              description: "No waiting period - coverage starts as soon as your policy is active"
+              description: "No waiting period - coverage starts immediately"
             },
             {
               title: "Direct Payment",
-              description: "Benefits paid directly to you, not the healthcare provider"
+              description: "Benefits paid directly to you"
             },
             {
               title: "Family Coverage",
@@ -1181,75 +1194,73 @@
         }
       };
 
-      // Modal functionality
+      // Get modal elements
       const modal = document.getElementById('policyModal');
-      const closeBtn = document.getElementsByClassName('close-modal')[0];
+      const modalContent = modal.querySelector('.modal-content');
 
+      // Function to open modal
       function openPolicyModal(policyType) {
         const policy = policyDetails[policyType];
-        const modalContent = document.querySelector('.modal-content');
-        
+        if (!policy) return;
+
         // Set the policy type as a data attribute for styling
         modalContent.setAttribute('data-policy', policyType);
-        
+
+        // Update modal content
         document.getElementById('modalTitle').textContent = policy.title;
-        document.getElementById('modalDescription').innerHTML = `<p>${policy.description}</p>`;
-        
-        // Update modal icon
+        document.getElementById('modalDescription').textContent = policy.description;
+
+        // Update icon
         const modalIcon = document.querySelector('.modal-icon i');
         modalIcon.className = `fas fa-${policy.icon}`;
 
-        // Generate coverage list
-        const coverageList = document.getElementById('coverageList');
-        coverageList.innerHTML = `
-          <h3>Coverage Includes:</h3>
-          <ul>
-            ${policy.coveragePoints.map(point => `<li><i class="fas fa-check"></i>${point}</li>`).join('')}
-          </ul>
-        `;
+        // Update coverage list
+        const coverageList = document.querySelector('.coverage-list');
+        coverageList.innerHTML = policy.coveragePoints.map(point => 
+          `<div class="coverage-item">
+            <i class="fas fa-check"></i>
+            ${point}
+          </div>`
+        ).join('');
 
-        // Generate benefits grid
-        const benefitsGrid = document.getElementById('benefitsGrid');
-        benefitsGrid.innerHTML = `
-          <h3>Key Benefits:</h3>
-          <div class="benefits-cards">
-            ${policy.benefits.map(benefit => `
-              <div class="benefit-card">
-                <h4>${benefit.title}</h4>
-                <p>${benefit.description}</p>
-              </div>
-            `).join('')}
-          </div>
-        `;
+        // Update benefits
+        const benefitsGrid = document.querySelector('.benefits-grid');
+        benefitsGrid.innerHTML = policy.benefits.map(benefit => 
+          `<div class="benefit-item">
+            <h4 class="benefit-title">${benefit.title}</h4>
+            <p class="benefit-description">${benefit.description}</p>
+          </div>`
+        ).join('');
 
-        modal.style.display = 'block';
+        // Show modal
+        modal.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
 
-      closeBtn.onclick = function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+      // Function to close modal
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
       }
 
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = 'none';
-          document.body.style.overflow = 'auto';
+      // Close modal when clicking outside
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
         }
-      }
+      });
+
+      // Close modal when pressing Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
 
       function showLeadForm() {
         // Implement lead form functionality
         console.log('Show lead form');
       }
-
-      // FAQ Toggle Functionality
-      document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-          const faqItem = question.parentElement;
-          faqItem.classList.toggle('active');
-        });
-      });
 
       // Quote Calculator Functionality
       let coverageSlider = document.getElementById('coverageSlider');
@@ -1269,6 +1280,14 @@
       function toggleCalculator() {
         const calculator = document.getElementById('quoteCalculator');
         calculator.classList.toggle('minimized');
+        
+        // Update the chevron icon
+        const chevron = calculator.querySelector('.minimize-btn i');
+        if (calculator.classList.contains('minimized')) {
+          chevron.className = 'fas fa-chevron-up';
+        } else {
+          chevron.className = 'fas fa-chevron-down';
+        }
       }
 
       function submitQuickQuote(event) {
@@ -1381,8 +1400,25 @@
         // FAQ toggles
         document.querySelectorAll('.faq-question').forEach(question => {
           question.addEventListener('click', () => {
-            const faqItem = question.parentElement;
-            faqItem.classList.toggle('active');
+            const faqItem = question.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            
+            // If this FAQ is already open, close it
+            if (faqItem.classList.contains('active')) {
+              faqItem.classList.remove('active');
+              answer.style.maxHeight = '0px';
+            } else {
+              // Close all other FAQs
+              document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                const otherAnswer = item.querySelector('.faq-answer');
+                otherAnswer.style.maxHeight = '0px';
+              });
+              
+              // Open this FAQ
+              faqItem.classList.add('active');
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
           });
         });
 
