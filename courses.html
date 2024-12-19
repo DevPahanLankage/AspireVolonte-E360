@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance & Insurance Courses - Learn from Industry Experts</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Hero Section Enhancements */
+        .courses-hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            overflow: hidden;
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .shape1 { top: 20%; left: 10%; width: 100px; height: 100px; background: var(--accent-color); transform: rotate(45deg); }
+        .shape2 { top: 40%; right: 15%; width: 150px; height: 150px; background: var(--primary-color); border-radius: 50%; }
+        .shape3 { bottom: 20%; left: 20%; width: 80px; height: 80px; background: var(--secondary-color); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 150px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-family: "Playfair Display", serif;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        .hero-title span {
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-subtitle {
+            font-family: "Montserrat", sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 0.5s;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 1s;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .primary-cta {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+        }
+
+        .primary-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: var(--primary-color);
+        }
+
+        .secondary-cta {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .secondary-cta:hover {
+            background: #fff;
+            color: var(--primary-color);
+        }
+
+        /* Course Cards Enhancement */
+        .course-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .course-image {
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover .course-image {
+            transform: scale(1.1);
+        }
+
+        .course-content {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .course-category {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .course-title {
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-family: "Playfair Display", serif;
+        }
+
+        .course-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .course-cta {
+            padding: 10px 20px;
+            background: var(--accent-color);
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .course-cta:hover {
+            transform: translateX(5px);
+            background: var(--primary-color);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 1.5s;
+        }
+
+        .mouse {
+            width: 30px;
+            height: 50px;
+            border: 2px solid #fff;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .mouse::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: #fff;
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translate(-50%, 0); opacity: 1; }
+            100% { transform: translate(-50%, 20px); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .courses-section {
+            background: var(--background);
+            padding: 6rem 0;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1>Aspire<span class="accent">Volonte</span></h1>
+                <p class="tagline">YOUR FINANCIAL ADVISOR</p>
+            </div>
+            <div class="nav-wrapper">
+                <ul class="nav-links">
+                    <li><a href="/#home" class="nav-link">Home</a></li>
+                    <li><a href="/#about" class="nav-link">About</a></li>
+                    <li class="dropdown">
+                        <a href="/courses.html" class="nav-link">Courses <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#financial">Financial Planning</a></li>
+                            <li><a href="#insurance">Insurance Fundamentals</a></li>
+                            <li><a href="#risk">Risk Management</a></li>
+                            <li><a href="#investment">Investment Strategies</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/#policies" class="nav-link">Insurance <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/#health">Health Insurance</a></li>
+                            <li><a href="/#life">Life Insurance</a></li>
+                            <li><a href="/#critical">Critical Illness</a></li>
+                            <li><a href="/#disability">Disability Insurance</a></li>
+                            <li><a href="/#accident">Accident Insurance</a></li>
+                            <li><a href="/#cancer">Cancer Insurance</a></li>
+                            <li><a href="/#hospital">Hospital Insurance</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/#plant-tree" class="nav-link">Plant a Tree</a></li>
+                    <li><a href="/#contact" class="cta-button">Contact Us</a></li>
+                </ul>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero-section courses-hero">
+        <div class="hero-particles">
+            <!-- Particles will be added by JavaScript -->
+        </div>
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Master <span>Finance & Insurance</span></h1>
+            <p class="hero-subtitle">Expert-led courses to advance your career in finance and insurance. Learn at your own pace with industry-recognized certifications.</p>
+            <div class="hero-cta">
+                <a href="#courses" class="cta-button primary-cta">Explore Courses</a>
+                <a href="#contact" class="cta-button secondary-cta">Contact Us</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Main Courses Grid -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="courses-grid">
+                <!-- Financial Planning Course -->
+                <div id="financial" class="course-card">
+                    <img src="assets/financial-planning.jpg" alt="Financial Planning" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Finance</span>
+                        <h3 class="course-title">Financial Planning Mastery</h3>
+                        <p class="course-description">Master the fundamentals of financial planning, from budgeting to investment strategies.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$199</span>
+                            <a href="#" class="course-cta" data-course="financial-planning">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insurance Fundamentals Course -->
+                <div id="insurance" class="course-card">
+                    <img src="assets/insurance-basics.jpg" alt="Insurance Fundamentals" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Insurance</span>
+                        <h3 class="course-title">Insurance Industry Fundamentals</h3>
+                        <p class="course-description">Comprehensive overview of insurance principles, products, and industry practices.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$249</span>
+                            <a href="#" class="course-cta" data-course="insurance-fundamentals">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Management Course -->
+                <div id="risk" class="course-card">
+                    <img src="assets/risk-management.jpg" alt="Risk Management" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Risk Management</span>
+                        <h3 class="course-title">Advanced Risk Management</h3>
+                        <p class="course-description">Learn to identify, assess, and mitigate various types of financial and insurance risks.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$299</span>
+                            <a href="#" class="course-cta" data-course="risk-management">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Strategies Course -->
+                <div id="investment" class="course-card">
+                    <img src="assets/investment-strategies.jpg" alt="Investment Strategies" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Investment</span>
+                        <h3 class="course-title">Investment Strategies Mastery</h3>
+                        <p class="course-description">Learn advanced investment techniques and portfolio management strategies.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$349</span>
+                            <a href="#" class="course-cta" data-course="investment-strategies">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Details Modal -->
+    <div class="course-modal" id="courseModal">
+        <div class="course-modal-content">
+            <div class="course-modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="course-modal-body">
+                <div class="course-features">
+                    <!-- Features will be populated by JavaScript -->
+                </div>
+                <div class="course-curriculum">
+                    <!-- Curriculum will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="course-modal-footer">
+                <button class="enroll-button">Enroll Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-info">
+          <a href="/" class="footer-logo">Aspire Volonte</a>
+          <p class="footer-description">
+            Providing comprehensive insurance solutions to protect what matters
+            most. Our commitment is to deliver peace of mind through reliable
+            coverage and exceptional service.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Insurance</h4>
+          <ul>
+            <li><a href="/#health"><i class="fas fa-chevron-right"></i>Health Insurance</a></li>
+            <li><a href="/#life"><i class="fas fa-chevron-right"></i>Life Insurance</a></li>
+            <li><a href="/#critical"><i class="fas fa-chevron-right"></i>Critical Illness</a></li>
+            <li><a href="/#disability"><i class="fas fa-chevron-right"></i>Disability Insurance</a></li>
+            <li><a href="/#accident"><i class="fas fa-chevron-right"></i>Accident Insurance</a></li>
+            <li><a href="/#cancer"><i class="fas fa-chevron-right"></i>Cancer Insurance</a></li>
+            <li><a href="/#hospital"><i class="fas fa-chevron-right"></i>Hospital Insurance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/#about"><i class="fas fa-chevron-right"></i>About Us</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i>Our Team</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i>Careers</a></li>
+            <li><a href="/#contact"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-chevron-right"></i>FAQ</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i>Claims</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i>Resources</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i>Help Center</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <div class="footer-copyright">
+            © 2024 Aspire Volonte Insurance. All rights reserved.
+          </div>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/courses.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.hero-particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.animationDuration = `${5 + Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles on load
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
+</body>
+</html> 
