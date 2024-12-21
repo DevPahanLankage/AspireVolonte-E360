@@ -750,6 +750,7 @@
                 <button type="submit" class="submit-btn">
                   <span>Schedule Callback</span>
                   <i class="fas fa-arrow-right"></i>
+                  <div class="loading-spinner"></div>
                 </button>
                 <p class="form-disclaimer">
                   By submitting this form, you agree to our privacy policy and
@@ -776,15 +777,14 @@
               <div class="form-group">
                 <input type="email" placeholder="Enter your email" required />
                 <button type="submit">
-                  Subscribe
+                  <span>Subscribe</span>
                   <i class="fas fa-arrow-right"></i>
+                  <div class="loading-spinner"></div>
                 </button>
               </div>
               <div class="form-checkbox">
                 <input type="checkbox" id="consent" required />
-                <label for="consent"
-                  >I agree to receive insurance updates and offers</label
-                >
+                <label for="consent">I agree to receive insurance updates and offers</label>
               </div>
             </form>
           </div>
@@ -1293,9 +1293,20 @@
       }
 
       // Newsletter form submission
+      let newsletterLastSubmitTime = 0;
+      const NEWSLETTER_SUBMIT_DELAY = 3000; // 3 seconds delay between submissions
+
       document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
+        // Check if enough time has passed since last submission
+        const now = Date.now();
+        if (now - newsletterLastSubmitTime < NEWSLETTER_SUBMIT_DELAY) {
+          alert('Please wait a moment before submitting again.');
+          return;
+        }
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
         const email = this.querySelector('input[type="email"]').value;
         const consent = this.querySelector('#consent').checked;
 
@@ -1303,6 +1314,10 @@
           alert('Please agree to receive updates and offers.');
           return;
         }
+
+        // Add loading state
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
 
         try {
           await db.collection('newsletter').add({
@@ -1312,15 +1327,34 @@
           });
           alert('Thank you for subscribing to our newsletter!');
           this.reset();
+          newsletterLastSubmitTime = now;
         } catch (error) {
           console.error('Error:', error);
           alert('Sorry, there was an error subscribing. Please try again.');
+        } finally {
+          // Remove loading state
+          submitBtn.classList.remove('loading');
+          submitBtn.disabled = false;
         }
       });
 
       // Contact form submission
+      let lastSubmitTime = 0;
+      const SUBMIT_DELAY = 3000; // 3 seconds delay between submissions
+
       document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault();
+        
+        // Check if enough time has passed since last submission
+        const now = Date.now();
+        if (now - lastSubmitTime < SUBMIT_DELAY) {
+          alert('Please wait a moment before submitting again.');
+          return;
+        }
+
+        const submitBtn = this.querySelector('.submit-btn');
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
         
         const formData = {
           type: 'contact',
@@ -1337,9 +1371,13 @@
           await db.collection('leads').add(formData);
           alert('Thank you! Your form has been submitted successfully.');
           this.reset();
+          lastSubmitTime = now;
         } catch (error) {
           console.error('Error:', error);
           alert('Sorry, there was an error submitting your form. Please try again.');
+        } finally {
+          submitBtn.classList.remove('loading');
+          submitBtn.disabled = false;
         }
       });
 
