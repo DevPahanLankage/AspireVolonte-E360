@@ -19,6 +19,7 @@
   --success: #00a1e4;
   --error: #dc2626;
   --section-spacing: 4rem;
+  scroll-behavior: smooth;
 }
 
 /* Base Styles */
@@ -2260,12 +2261,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Tree Planting Section */
+
 .policy-tree-section {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  padding: 6rem 0;
+  padding: 2rem 0;
   position: relative;
   overflow: hidden;
 }
+
 
 .impact-counter {
   text-align: center;
@@ -3963,4 +3965,78 @@ h1, h2, h3, h4, h5, h6 {
   .quote-calculator {
     width: calc(100% - 40px);
   }
+}
+
+/* Health Insurance Importance Section */
+.health-importance-section {
+  padding: 5rem 0;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+}
+
+.importance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.importance-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.importance-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.importance-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.importance-icon i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.importance-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.importance-card p {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.importance-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .importance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .importance-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Ensure sections with anchor links have proper spacing from fixed header */
+section[id] {
+  scroll-margin-top: 80px; /* Adjust this value based on your header height */
 }
