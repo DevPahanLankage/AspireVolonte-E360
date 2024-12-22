@@ -1256,8 +1256,13 @@
       });
 
       function showLeadForm() {
-        // Implement lead form functionality
-        console.log('Show lead form');
+        // Close the policy modal first
+        closeModal();
+        // Redirect to contact section
+        document.querySelector('#contact').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
 
       // Lead Magnet Modal
